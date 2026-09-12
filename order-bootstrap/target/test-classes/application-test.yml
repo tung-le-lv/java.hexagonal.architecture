@@ -1,0 +1,34 @@
+# Integration tests run against H2 with the production Flyway migrations, so the SQL that ships is the
+# SQL under test. The outbox relay scheduler is disabled: the tests drive the relay use case directly
+# rather than waiting for a timer.
+spring:
+  datasource:
+    url: jdbc:h2:mem:orders-test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: false
+  flyway:
+    enabled: true
+    clean-disabled: false
+
+orders:
+  discount:
+    currency: EUR
+    tiers:
+      - threshold: 500.00
+        percentage: 10
+      - threshold: 200.00
+        percentage: 5
+  outbox:
+    relay:
+      enabled: false
+
+logging:
+  level:
+    org.hibernate.SQL: WARN

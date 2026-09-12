@@ -1,0 +1,4 @@
+/Users/tungle/Data/java.hexagonal.architecture/order-bootstrap/src/main/java/com/acme/orders/bootstrap/OrderServiceApplication.java
+/Users/tungle/Data/java.hexagonal.architecture/order-bootstrap/src/main/java/com/acme/orders/bootstrap/config/DomainConfiguration.java
+/Users/tungle/Data/java.hexagonal.architecture/order-bootstrap/src/main/java/com/acme/orders/bootstrap/config/OrderProperties.java
+/Users/tungle/Data/java.hexagonal.architecture/order-bootstrap/src/main/java/com/acme/orders/bootstrap/config/UseCaseConfiguration.java

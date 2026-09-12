@@ -1,0 +1,4 @@
+com/acme/orders/adapter/in/rest/RestTestApplication.class
+com/acme/orders/adapter/in/rest/OrderControllerTest$StubbedUseCases.class
+com/acme/orders/adapter/in/rest/OrderControllerTest$StubbedUseCases$Stub.class
+com/acme/orders/adapter/in/rest/OrderControllerTest.class

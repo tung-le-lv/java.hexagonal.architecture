@@ -1,0 +1,8 @@
+com/acme/orders/bootstrap/config/UseCaseConfiguration.class
+com/acme/orders/bootstrap/config/DomainConfiguration.class
+com/acme/orders/bootstrap/config/OrderProperties$DiscountProperties.class
+com/acme/orders/bootstrap/config/OrderProperties$RelayProperties.class
+com/acme/orders/bootstrap/config/OrderProperties$TierProperties.class
+com/acme/orders/bootstrap/config/OrderProperties$OutboxProperties.class
+com/acme/orders/bootstrap/config/OrderProperties.class
+com/acme/orders/bootstrap/OrderServiceApplication.class

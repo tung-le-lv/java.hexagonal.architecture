@@ -1,0 +1,8 @@
+/Users/tungle/Data/java.hexagonal.architecture/order-domain/src/test/java/com/acme/orders/domain/model/order/OrderDraftEditingTest.java
+/Users/tungle/Data/java.hexagonal.architecture/order-domain/src/test/java/com/acme/orders/domain/model/order/OrderFixtures.java
+/Users/tungle/Data/java.hexagonal.architecture/order-domain/src/test/java/com/acme/orders/domain/model/order/OrderLifecycleTest.java
+/Users/tungle/Data/java.hexagonal.architecture/order-domain/src/test/java/com/acme/orders/domain/model/order/OrderStatusTest.java
+/Users/tungle/Data/java.hexagonal.architecture/order-domain/src/test/java/com/acme/orders/domain/model/shared/AddressTest.java
+/Users/tungle/Data/java.hexagonal.architecture/order-domain/src/test/java/com/acme/orders/domain/model/shared/MoneyTest.java
+/Users/tungle/Data/java.hexagonal.architecture/order-domain/src/test/java/com/acme/orders/domain/model/shared/QuantityTest.java
+/Users/tungle/Data/java.hexagonal.architecture/order-domain/src/test/java/com/acme/orders/domain/policy/TieredVolumeDiscountPolicyTest.java

@@ -1,0 +1,14 @@
+com/acme/orders/adapter/in/rest/dto/OrderResponse.class
+com/acme/orders/adapter/in/rest/dto/CreateOrderRequest.class
+com/acme/orders/adapter/in/rest/dto/PayOrderRequest.class
+com/acme/orders/adapter/in/rest/dto/ChangeQuantityRequest.class
+com/acme/orders/adapter/in/rest/RestExceptionHandler.class
+com/acme/orders/adapter/in/rest/dto/OrderSummaryResponse.class
+com/acme/orders/adapter/in/rest/dto/PagedResponse.class
+com/acme/orders/adapter/in/rest/dto/AddOrderLineRequest.class
+com/acme/orders/adapter/in/rest/dto/AddressPayload.class
+com/acme/orders/adapter/in/rest/dto/OrderResponse$OrderLinePayload.class
+com/acme/orders/adapter/in/rest/dto/CancelOrderRequest.class
+com/acme/orders/adapter/in/rest/dto/ShipOrderRequest.class
+com/acme/orders/adapter/in/rest/OrderController.class
+com/acme/orders/adapter/in/rest/mapper/OrderRestMapper.class

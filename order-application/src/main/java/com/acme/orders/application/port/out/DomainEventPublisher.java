@@ -1,0 +1,16 @@
+package com.acme.orders.application.port.out;
+
+import com.acme.orders.domain.model.shared.DomainEvent;
+import java.util.List;
+
+/**
+ * Driven port for getting domain events out of the service.
+ *
+ * <p>The application calls this inside the same transaction as the state change it describes; how
+ * that is made reliable — an outbox table, a broker transaction — is the adapter's problem. The core
+ * states only that the events must not be lost if the write commits.
+ */
+public interface DomainEventPublisher {
+
+    void publish(List<DomainEvent> events);
+}

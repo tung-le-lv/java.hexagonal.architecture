@@ -1,0 +1,7 @@
+com/acme/orders/application/usecase/RelayPendingEventsServiceTest$FakePendingEventStore.class
+com/acme/orders/application/usecase/OrderUseCasesTest.class
+com/acme/orders/application/usecase/RelayPendingEventsServiceTest$FakePublisher.class
+com/acme/orders/application/fake/InMemoryOrderRepository.class
+com/acme/orders/application/usecase/RelayPendingEventsServiceTest.class
+com/acme/orders/application/fake/RecordingEventPublisher.class
+com/acme/orders/application/fake/DirectTransactionRunner.class

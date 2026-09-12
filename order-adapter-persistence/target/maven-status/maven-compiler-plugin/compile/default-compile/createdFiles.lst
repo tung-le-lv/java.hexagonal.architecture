@@ -1,0 +1,10 @@
+com/acme/orders/adapter/out/persistence/mapper/OrderPersistenceMapper.class
+com/acme/orders/adapter/out/persistence/OutboxDomainEventPublisher.class
+com/acme/orders/adapter/out/persistence/entity/OrderJpaEntity.class
+com/acme/orders/adapter/out/persistence/OutboxPendingEventStore.class
+com/acme/orders/adapter/out/persistence/SpringTransactionRunner.class
+com/acme/orders/adapter/out/persistence/repository/OutboxJpaRepository.class
+com/acme/orders/adapter/out/persistence/OrderPersistenceAdapter.class
+com/acme/orders/adapter/out/persistence/entity/OutboxMessageJpaEntity.class
+com/acme/orders/adapter/out/persistence/entity/OrderLineJpaEntity.class
+com/acme/orders/adapter/out/persistence/repository/OrderJpaRepository.class

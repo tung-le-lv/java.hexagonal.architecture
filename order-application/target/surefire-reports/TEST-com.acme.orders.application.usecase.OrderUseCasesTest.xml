@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.acme.orders.application.usecase.OrderUseCasesTest" time="0.113" tests="12" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="25"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/tungle/Data/java.hexagonal.architecture/order-application/target/test-classes:/Users/tungle/Data/java.hexagonal.architecture/order-application/target/classes:/Users/tungle/Data/java.hexagonal.architecture/order-domain/target/order-domain-1.0.0-SNAPSHOT.jar:/Users/tungle/.m2/repository/org/junit/jupiter/junit-jupiter/6.0.3/junit-jupiter-6.0.3.jar:/Users/tungle/.m2/repository/org/junit/jupiter/junit-jupiter-api/6.0.3/junit-jupiter-api-6.0.3.jar:/Users/tungle/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/tungle/.m2/repository/org/junit/platform/junit-platform-commons/6.0.3/junit-platform-commons-6.0.3.jar:/Users/tungle/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/tungle/.m2/repository/org/jspecify/jspecify/1.0.1/jspecify-1.0.1.jar:/Users/tungle/.m2/repository/org/junit/jupiter/junit-jupiter-params/6.0.3/junit-jupiter-params-6.0.3.jar:/Users/tungle/.m2/repository/org/junit/jupiter/junit-jupiter-engine/6.0.3/junit-jupiter-engine-6.0.3.jar:/Users/tungle/.m2/repository/org/junit/platform/junit-platform-engine/6.0.3/junit-platform-engine-6.0.3.jar:/Users/tungle/.m2/repository/org/assertj/assertj-core/3.26.3/assertj-core-3.26.3.jar:/Users/tungle/.m2/repository/net/bytebuddy/byte-buddy/1.18.11/byte-buddy-1.18.11.jar:"/>
+    <property name="java.vm.vendor" value="Homebrew"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://github.com/Homebrew/homebrew-core/issues"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="25"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="VN"/>
+    <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk@25/25.0.4.1/libexec/openjdk.jdk/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/tungle/Data/java.hexagonal.architecture/order-application/target/surefire/surefirebooter-20260912134819722_6.jar /Users/tungle/Data/java.hexagonal.architecture/order-application/target/surefire 2026-09-12T13-48-18_634-jvmRun1 surefire-20260912134819722_4tmp surefire_1-20260912134819722_5tmp"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/Users/tungle/Data/java.hexagonal.architecture/order-application/target/test-classes:/Users/tungle/Data/java.hexagonal.architecture/order-application/target/classes:/Users/tungle/Data/java.hexagonal.architecture/order-domain/target/order-domain-1.0.0-SNAPSHOT.jar:/Users/tungle/.m2/repository/org/junit/jupiter/junit-jupiter/6.0.3/junit-jupiter-6.0.3.jar:/Users/tungle/.m2/repository/org/junit/jupiter/junit-jupiter-api/6.0.3/junit-jupiter-api-6.0.3.jar:/Users/tungle/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/tungle/.m2/repository/org/junit/platform/junit-platform-commons/6.0.3/junit-platform-commons-6.0.3.jar:/Users/tungle/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/tungle/.m2/repository/org/jspecify/jspecify/1.0.1/jspecify-1.0.1.jar:/Users/tungle/.m2/repository/org/junit/jupiter/junit-jupiter-params/6.0.3/junit-jupiter-params-6.0.3.jar:/Users/tungle/.m2/repository/org/junit/jupiter/junit-jupiter-engine/6.0.3/junit-jupiter-engine-6.0.3.jar:/Users/tungle/.m2/repository/org/junit/platform/junit-platform-engine/6.0.3/junit-platform-engine-6.0.3.jar:/Users/tungle/.m2/repository/org/assertj/assertj-core/3.26.3/assertj-core-3.26.3.jar:/Users/tungle/.m2/repository/net/bytebuddy/byte-buddy/1.18.11/byte-buddy-1.18.11.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/tungle"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2026-08-18"/>
+    <property name="java.home" value="/opt/homebrew/Cellar/openjdk@25/25.0.4.1/libexec/openjdk.jdk/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/tungle/Data/java.hexagonal.architecture/order-application"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="apple.awt.application.name" value="ForkedBooter"/>
+    <property name="surefire.real.class.path" value="/Users/tungle/Data/java.hexagonal.architecture/order-application/target/surefire/surefirebooter-20260912134819722_6.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.runtime.version" value="25.0.4.1"/>
+    <property name="user.name" value="tungle"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="26.6"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Homebrew"/>
+    <property name="localRepository" value="/Users/tungle/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/Homebrew/homebrew-core/issues"/>
+    <property name="java.io.tmpdir" value="/var/folders/4m/t4lvgv8x1nnbz0_7wv_t1vvm0000gn/T/"/>
+    <property name="java.version" value="25.0.4.1"/>
+    <property name="user.dir" value="/Users/tungle/Data/java.hexagonal.architecture/order-application"/>
+    <property name="os.arch" value="aarch64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/tungle/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Homebrew"/>
+    <property name="java.vm.version" value="25.0.4.1"/>
+    <property name="stdin.encoding" value="UTF-8"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.class.version" value="69.0"/>
+  </properties>
+  <testcase name="oneTransactionPerCommand" classname="com.acme.orders.application.usecase.OrderUseCasesTest" time="0.05"/>
+  <testcase name="returnsThePersistedVersion" classname="com.acme.orders.application.usecase.OrderUseCasesTest" time="0.003"/>
+  <testcase name="invalidQuantityIsRejected" classname="com.acme.orders.application.usecase.OrderUseCasesTest" time="0.003"/>
+  <testcase name="commandsReadInsideTheirTransaction" classname="com.acme.orders.application.usecase.OrderUseCasesTest" time="0.002"/>
+  <testcase name="domainFailuresPublishNothing" classname="com.acme.orders.application.usecase.OrderUseCasesTest" time="0.008"/>
+  <testcase name="unknownOrderIsReported" classname="com.acme.orders.application.usecase.OrderUseCasesTest" time="0.001"/>
+  <testcase name="lineEditsAreNotBusinessEvents" classname="com.acme.orders.application.usecase.OrderUseCasesTest" time="0.004"/>
+  <testcase name="malformedCommandsAreRejectedEarly" classname="com.acme.orders.application.usecase.OrderUseCasesTest" time="0.002"/>
+  <testcase name="cancellingPublishesOrigin" classname="com.acme.orders.application.usecase.OrderUseCasesTest" time="0.002"/>
+  <testcase name="staleWritesAreRefused" classname="com.acme.orders.application.usecase.OrderUseCasesTest" time="0.001"/>
+  <testcase name="createsADraft" classname="com.acme.orders.application.usecase.OrderUseCasesTest" time="0.001"/>
+  <testcase name="fullHappyPath" classname="com.acme.orders.application.usecase.OrderUseCasesTest" time="0.003"/>
+</testsuite>
