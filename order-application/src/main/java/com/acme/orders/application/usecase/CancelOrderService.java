@@ -1,10 +1,10 @@
 package com.acme.orders.application.usecase;
 
-import com.acme.orders.application.port.in.CancelOrderUseCase;
-import com.acme.orders.application.port.in.command.CancelOrderCommand;
-import com.acme.orders.application.port.out.DomainEventPublisher;
-import com.acme.orders.application.port.out.OrderRepository;
-import com.acme.orders.application.port.out.TransactionRunner;
+import com.acme.orders.application.port.inbound.CancelOrderUseCase;
+import com.acme.orders.application.port.inbound.command.CancelOrderCommand;
+import com.acme.orders.application.port.outbound.DomainEventPublisher;
+import com.acme.orders.application.port.outbound.OrderRepository;
+import com.acme.orders.application.port.outbound.TransactionRunner;
 import com.acme.orders.application.view.OrderView;
 import java.time.Clock;
 import java.util.Objects;

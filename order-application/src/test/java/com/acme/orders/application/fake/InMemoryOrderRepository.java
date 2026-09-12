@@ -1,7 +1,7 @@
 package com.acme.orders.application.fake;
 
 import com.acme.orders.application.exception.ConcurrentModificationException;
-import com.acme.orders.application.port.out.OrderRepository;
+import com.acme.orders.application.port.outbound.OrderRepository;
 import com.acme.orders.domain.model.order.Order;
 import com.acme.orders.domain.model.order.OrderId;
 import com.acme.orders.domain.model.order.OrderSnapshot;

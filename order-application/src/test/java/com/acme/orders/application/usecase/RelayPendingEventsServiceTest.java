@@ -3,9 +3,9 @@ package com.acme.orders.application.usecase;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.acme.orders.application.fake.DirectTransactionRunner;
-import com.acme.orders.application.port.out.EventMessagePublisher;
-import com.acme.orders.application.port.out.PendingEventMessage;
-import com.acme.orders.application.port.out.PendingEventStore;
+import com.acme.orders.application.port.outbound.EventMessagePublisher;
+import com.acme.orders.application.port.outbound.PendingEventMessage;
+import com.acme.orders.application.port.outbound.PendingEventStore;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;

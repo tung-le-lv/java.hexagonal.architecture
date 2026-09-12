@@ -7,15 +7,17 @@ Everything that touches the outside world — HTTP, a database, a message broker
 business logic instead, through an interface the business logic defines. Reverse that dependency
 and you no longer have a hexagonal architecture; you have a layered one with extra interfaces.
 
+![Hexagonal architecture: inbound adapters (REST API, command handlers) calling into the Order Service business logic through input ports, and the business logic calling out through output ports to outbound adapters (database adapter, domain event publisher)](docs/hex-architecture.webp)
+
 ## Ports: the business logic defines its own boundary
 
 A **port** is an interface owned by the application layer, written in the application's own
 vocabulary. There are two kinds, and the difference is about who calls whom:
 
-- **Input ports** (`order-application/.../port/in`) are the operations the application offers to
+- **Input ports** (`order-application/.../port/inbound`) are the operations the application offers to
   the outside world — `PlaceOrderUseCase`, `PayOrderUseCase`, `GetOrderQuery`. Something from
   outside calls *into* these.
-- **Output ports** (`order-application/.../port/out`) are the capabilities the application needs
+- **Output ports** (`order-application/.../port/outbound`) are the capabilities the application needs
   from the outside world — `OrderRepository`, `DomainEventPublisher`, `TransactionRunner`. The
   application calls *out* through these.
 
@@ -52,7 +54,7 @@ module boundary:
 ```
 order-service
 ├── order-domain                 ← the hexagon's core. ZERO dependencies.
-├── order-application            ← ports (in/out) + use cases. Depends on: domain.
+├── order-application            ← ports (inbound/outbound) + use cases. Depends on: domain.
 ├── order-adapter-rest           ← driving adapter (HTTP).     Depends on: application.
 ├── order-adapter-persistence    ← driven adapter (JPA).       Depends on: application.
 ├── order-adapter-messaging      ← driven adapter (broker).    Depends on: application.
@@ -73,8 +75,8 @@ order-service
               │  calls ↓            │          implements ↑ │
     ┌─────────▼─────────────────────▼──────────────────────┴──────────┐
     │                        order-application                        │
-    │   port.in (input ports)   ·   port.out (output ports)           │
-    │   usecase (implements port.in, calls port.out)                  │
+    │   port.inbound (input ports)   ·   port.outbound (output ports) │
+    │   usecase (implements port.inbound, calls port.outbound)        │
     └─────────────────────────────┬─────────────────────────────────── ┘
                                   │  uses
                     ┌─────────────▼─────────────┐
@@ -141,7 +143,7 @@ becomes false:
   graph would technically allow importing just the annotation.
 - The three adapter modules never depend on one another.
 - Spring Data types (`Page`, `Pageable`) never cross a port boundary.
-- Every type in `port.in`/`port.out` is an interface, not a class wearing a port's name.
+- Every type in `port.inbound`/`port.outbound` is an interface, not a class wearing a port's name.
 - Adapters depend on ports, never directly on a `usecase` implementation class.
 
 Where the module graph makes a violation impossible to compile, these rules are redundant by

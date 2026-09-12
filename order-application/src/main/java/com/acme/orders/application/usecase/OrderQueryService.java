@@ -2,9 +2,9 @@ package com.acme.orders.application.usecase;
 
 import com.acme.orders.application.exception.InvalidCommandException;
 import com.acme.orders.application.exception.OrderNotFoundException;
-import com.acme.orders.application.port.in.query.GetOrderQuery;
-import com.acme.orders.application.port.in.query.ListCustomerOrdersQuery;
-import com.acme.orders.application.port.out.OrderQueryRepository;
+import com.acme.orders.application.port.inbound.query.GetOrderQuery;
+import com.acme.orders.application.port.inbound.query.ListCustomerOrdersQuery;
+import com.acme.orders.application.port.outbound.OrderQueryRepository;
 import com.acme.orders.application.view.OrderSummaryView;
 import com.acme.orders.application.view.OrderView;
 import com.acme.orders.application.view.Page;

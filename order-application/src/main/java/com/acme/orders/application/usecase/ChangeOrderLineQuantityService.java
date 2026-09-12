@@ -1,10 +1,10 @@
 package com.acme.orders.application.usecase;
 
-import com.acme.orders.application.port.in.ChangeOrderLineQuantityUseCase;
-import com.acme.orders.application.port.in.command.ChangeOrderLineQuantityCommand;
-import com.acme.orders.application.port.out.DomainEventPublisher;
-import com.acme.orders.application.port.out.OrderRepository;
-import com.acme.orders.application.port.out.TransactionRunner;
+import com.acme.orders.application.port.inbound.ChangeOrderLineQuantityUseCase;
+import com.acme.orders.application.port.inbound.command.ChangeOrderLineQuantityCommand;
+import com.acme.orders.application.port.outbound.DomainEventPublisher;
+import com.acme.orders.application.port.outbound.OrderRepository;
+import com.acme.orders.application.port.outbound.TransactionRunner;
 import com.acme.orders.application.view.OrderView;
 import com.acme.orders.domain.model.order.OrderLineId;
 import com.acme.orders.domain.model.shared.Quantity;

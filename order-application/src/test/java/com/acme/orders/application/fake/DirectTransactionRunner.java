@@ -1,6 +1,6 @@
 package com.acme.orders.application.fake;
 
-import com.acme.orders.application.port.out.TransactionRunner;
+import com.acme.orders.application.port.outbound.TransactionRunner;
 import java.util.function.Supplier;
 
 /**

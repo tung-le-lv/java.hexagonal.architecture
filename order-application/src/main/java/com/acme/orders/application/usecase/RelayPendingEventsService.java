@@ -1,10 +1,10 @@
 package com.acme.orders.application.usecase;
 
-import com.acme.orders.application.port.in.RelayPendingEventsUseCase;
-import com.acme.orders.application.port.out.EventMessagePublisher;
-import com.acme.orders.application.port.out.PendingEventMessage;
-import com.acme.orders.application.port.out.PendingEventStore;
-import com.acme.orders.application.port.out.TransactionRunner;
+import com.acme.orders.application.port.inbound.RelayPendingEventsUseCase;
+import com.acme.orders.application.port.outbound.EventMessagePublisher;
+import com.acme.orders.application.port.outbound.PendingEventMessage;
+import com.acme.orders.application.port.outbound.PendingEventStore;
+import com.acme.orders.application.port.outbound.TransactionRunner;
 import java.util.List;
 import java.util.Objects;
 

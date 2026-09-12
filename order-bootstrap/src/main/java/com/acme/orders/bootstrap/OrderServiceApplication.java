@@ -16,12 +16,12 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  */
 @SpringBootApplication(scanBasePackages = {
         "com.acme.orders.bootstrap",
-        "com.acme.orders.adapter.in.rest",
-        "com.acme.orders.adapter.out.persistence",
-        "com.acme.orders.adapter.out.messaging"
+        "com.acme.orders.adapter.inbound.rest",
+        "com.acme.orders.adapter.outbound.persistence",
+        "com.acme.orders.adapter.outbound.messaging"
 })
-@EnableJpaRepositories(basePackages = "com.acme.orders.adapter.out.persistence.repository")
-@EntityScan(basePackages = "com.acme.orders.adapter.out.persistence.entity")
+@EnableJpaRepositories(basePackages = "com.acme.orders.adapter.outbound.persistence.repository")
+@EntityScan(basePackages = "com.acme.orders.adapter.outbound.persistence.entity")
 @EnableScheduling
 public class OrderServiceApplication {
 

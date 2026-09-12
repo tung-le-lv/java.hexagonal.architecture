@@ -8,8 +8,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.acme.orders.application.port.in.RelayPendingEventsUseCase;
-import com.acme.orders.application.port.out.PendingEventStore;
+import com.acme.orders.application.port.inbound.RelayPendingEventsUseCase;
+import com.acme.orders.application.port.outbound.PendingEventStore;
 import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.ObjectMapper;
 import java.util.UUID;

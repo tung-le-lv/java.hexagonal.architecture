@@ -25,9 +25,9 @@ class HexagonalArchitectureTest {
 
     private static final String DOMAIN = "com.acme.orders.domain..";
     private static final String APPLICATION = "com.acme.orders.application..";
-    private static final String ADAPTER_REST = "com.acme.orders.adapter.in.rest..";
-    private static final String ADAPTER_PERSISTENCE = "com.acme.orders.adapter.out.persistence..";
-    private static final String ADAPTER_MESSAGING = "com.acme.orders.adapter.out.messaging..";
+    private static final String ADAPTER_REST = "com.acme.orders.adapter.inbound.rest..";
+    private static final String ADAPTER_PERSISTENCE = "com.acme.orders.adapter.outbound.persistence..";
+    private static final String ADAPTER_MESSAGING = "com.acme.orders.adapter.outbound.messaging..";
     private static final String BOOTSTRAP = "com.acme.orders.bootstrap..";
 
     // ------------------------------------------------------------------ the hexagon, as a whole

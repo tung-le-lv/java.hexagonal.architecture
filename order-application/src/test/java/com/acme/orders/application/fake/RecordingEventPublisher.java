@@ -1,6 +1,6 @@
 package com.acme.orders.application.fake;
 
-import com.acme.orders.application.port.out.DomainEventPublisher;
+import com.acme.orders.application.port.outbound.DomainEventPublisher;
 import com.acme.orders.domain.model.shared.DomainEvent;
 import java.util.ArrayList;
 import java.util.List;
