@@ -18,13 +18,21 @@ vocabulary. There are two kinds, and the difference is about who calls whom:
   the outside world — `IPlaceOrderUseCase`, `IPayOrderUseCase`, `IGetOrderQuery`. Something from
   outside calls *into* these.
 - **Output ports** (`order-application/.../port/outbound`) are the capabilities the application needs
-  from the outside world — `IOrderRepository`, `IDomainEventPublisher`, `ITransactionRunner`. The
+  from the outside world — `IEventMessagePublisher`, `IDomainEventPublisher`, `ITransactionRunner`. The
   application calls *out* through these.
 
 Both kinds are interfaces with no implementation and no framework type in their signatures. An
 input port doesn't know it will be called from Spring MVC; an output port doesn't know it will be
 implemented with JPA. That ignorance is the entire point — it's what makes the application layer
 portable.
+
+One output port is a deliberate exception to that package rule: `IOrderRepository` lives in
+`order-domain/.../repository`, following DDD's convention that a repository is domain vocabulary —
+one per aggregate root — rather than an application concern. It's still implemented outside the
+core (`OrderPersistenceAdapter`), so the dependency still points inward; only the interface's
+*package* moved, from an application port to a domain-owned contract. `IOrderQueryRepository`
+stays under `port/outbound`, because it returns application-level view types for queries, not the
+aggregate — it's a CQRS read port, not a DDD repository.
 
 ## Adapters: everything outside the ports
 
@@ -95,42 +103,14 @@ The three adapter modules each depend only on `order-application`, and on nothin
 That's not incidental — it's what guarantees `order-adapter-rest` could be deleted and replaced
 without `order-adapter-persistence` noticing.
 
-## The composition root: where the hexagon is assembled
-
 Every other module knows only the slice of the hexagon it needs. `order-bootstrap` is the one
 module allowed to know about all of them at once, because something has to wire a driving
 adapter's calls through to a driven adapter's implementation — and that wiring is itself not
 business logic, so it doesn't belong in `order-application`.
 
-Concretely, `UseCaseConfiguration` in `order-bootstrap` has an explicit `@Bean` method per use
-case, constructing each one by hand from its output-port dependencies:
+## Architecture Test
 
-```java
-@Bean
-IPlaceOrderUseCase placeOrderUseCase(IOrderRepository orders, IDomainEventPublisher events,
-                                     ITransactionRunner transactions, IDiscountPolicy discountPolicy, Clock clock) {
-    return new PlaceOrderService(orders, events, transactions, discountPolicy, clock);
-}
-```
-
-This is more typing than scattering `@Service` over each use case class — and that's the
-trade-off being made deliberately. `@Service` is a Spring annotation; putting it on a class in
-`order-application` would mean the application layer imports Spring, which is exactly the
-dependency direction the hexagon forbids. Wiring the beans from outside, in the one module that's
-allowed to know about Spring *and* about every port, keeps that import out of the core at the
-cost of one configuration class.
-
-The same applies to the transaction boundary: no use case carries `@Transactional`, because that
-annotation is a framework dependency too. Instead `order-application` declares a
-`ITransactionRunner` output port, and `order-adapter-persistence` supplies
-`SpringTransactionRunner` as its implementation. Every use case calls
-`executor.apply(orderId, ...)`, which opens exactly one `transactions.inTransaction(...)` around
-loading the aggregate, applying the command, and saving it — the use case still controls precisely
-where the transaction starts and ends, it just doesn't know *how* a transaction is implemented.
-
-## Checking the claim instead of asserting it
-
-Anyone can write a README that claims clean boundaries. This repo backs the claim with an
+This repo backs the claim with an
 executable check:
 [`HexagonalArchitectureTest`](order-bootstrap/src/test/java/com/acme/orders/bootstrap/architecture/HexagonalArchitectureTest.java),
 built on ArchUnit, runs as part of `mvn verify` and fails the build if any of the following

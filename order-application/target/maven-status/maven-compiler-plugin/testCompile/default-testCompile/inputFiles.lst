@@ -1,5 +1,0 @@
-/Users/tungle/Data/java.hexagonal.architecture/order-application/src/test/java/com/acme/orders/application/fake/DirectTransactionRunner.java
-/Users/tungle/Data/java.hexagonal.architecture/order-application/src/test/java/com/acme/orders/application/fake/InMemoryOrderRepository.java
-/Users/tungle/Data/java.hexagonal.architecture/order-application/src/test/java/com/acme/orders/application/fake/RecordingEventPublisher.java
-/Users/tungle/Data/java.hexagonal.architecture/order-application/src/test/java/com/acme/orders/application/usecase/OrderUseCasesTest.java
-/Users/tungle/Data/java.hexagonal.architecture/order-application/src/test/java/com/acme/orders/application/usecase/RelayPendingEventsServiceTest.java

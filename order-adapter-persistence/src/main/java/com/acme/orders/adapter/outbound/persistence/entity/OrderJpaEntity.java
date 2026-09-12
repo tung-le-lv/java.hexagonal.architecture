@@ -20,7 +20,7 @@ import java.util.UUID;
  *
  * <p>This is the whole reason the aggregate has no JPA annotations on it: the table can grow columns,
  * change types and denormalise for query speed without any of that showing up in
- * {@link com.acme.orders.domain.model.order.Order}. It therefore has the things JPA needs and DDD
+ * {@link com.acme.orders.domain.aggregate.Order}. It therefore has the things JPA needs and DDD
  * dislikes — a no-arg constructor, setters, mutable collections — and none of that escapes this
  * package.
  */

@@ -3,7 +3,7 @@ package com.acme.orders.adapter.outbound.persistence;
 import com.acme.orders.adapter.outbound.persistence.entity.OutboxMessageJpaEntity;
 import com.acme.orders.adapter.outbound.persistence.repository.IOutboxJpaRepository;
 import com.acme.orders.application.port.outbound.IDomainEventPublisher;
-import com.acme.orders.domain.model.shared.IDomainEvent;
+import com.acme.orders.domain.event.IDomainEvent;
 import tools.jackson.core.JacksonException;
 import tools.jackson.databind.ObjectMapper;
 import java.util.List;

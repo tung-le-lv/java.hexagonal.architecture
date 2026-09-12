@@ -1,8 +1,0 @@
-com/acme/orders/domain/model/order/OrderLifecycleTest.class
-com/acme/orders/domain/model/shared/AddressTest.class
-com/acme/orders/domain/model/shared/MoneyTest.class
-com/acme/orders/domain/model/shared/QuantityTest.class
-com/acme/orders/domain/policy/TieredVolumeDiscountPolicyTest.class
-com/acme/orders/domain/model/order/OrderStatusTest.class
-com/acme/orders/domain/model/order/OrderFixtures.class
-com/acme/orders/domain/model/order/OrderDraftEditingTest.class

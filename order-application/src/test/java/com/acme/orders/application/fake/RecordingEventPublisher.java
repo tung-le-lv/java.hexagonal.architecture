@@ -1,7 +1,7 @@
 package com.acme.orders.application.fake;
 
 import com.acme.orders.application.port.outbound.IDomainEventPublisher;
-import com.acme.orders.domain.model.shared.IDomainEvent;
+import com.acme.orders.domain.event.IDomainEvent;
 import java.util.ArrayList;
 import java.util.List;
 

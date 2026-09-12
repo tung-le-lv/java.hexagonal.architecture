@@ -1,6 +1,6 @@
 package com.acme.orders.application.port.outbound;
 
-import com.acme.orders.domain.model.shared.IDomainEvent;
+import com.acme.orders.domain.event.IDomainEvent;
 import java.util.List;
 
 /**

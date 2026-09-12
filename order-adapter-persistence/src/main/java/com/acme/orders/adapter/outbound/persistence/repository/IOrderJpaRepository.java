@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 /**
  * Spring Data's view of the orders table.
  *
- * <p>Note that this is not the port: {@link com.acme.orders.application.port.outbound.IOrderRepository} is,
+ * <p>Note that this is not the port: {@link com.acme.orders.domain.repository.IOrderRepository} is,
  * and the adapter implements it using this. Keeping Spring Data behind the port is what stops
  * {@code Page}, {@code Pageable} and {@code @Query} from spreading into the use cases.
  */

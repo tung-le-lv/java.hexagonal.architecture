@@ -7,15 +7,15 @@ import com.acme.orders.application.exception.ConcurrentModificationException;
 import com.acme.orders.application.view.OrderSummaryView;
 import com.acme.orders.application.view.OrderView;
 import com.acme.orders.application.view.Page;
-import com.acme.orders.domain.model.order.CustomerId;
-import com.acme.orders.domain.model.order.Order;
-import com.acme.orders.domain.model.order.OrderLineId;
-import com.acme.orders.domain.model.order.OrderStatus;
-import com.acme.orders.domain.model.order.ProductId;
-import com.acme.orders.domain.model.shared.Address;
-import com.acme.orders.domain.model.shared.Money;
-import com.acme.orders.domain.model.shared.Quantity;
-import com.acme.orders.domain.policy.NoDiscountPolicy;
+import com.acme.orders.domain.valueobject.CustomerId;
+import com.acme.orders.domain.aggregate.Order;
+import com.acme.orders.domain.valueobject.OrderLineId;
+import com.acme.orders.domain.valueobject.OrderStatus;
+import com.acme.orders.domain.valueobject.ProductId;
+import com.acme.orders.domain.valueobject.Address;
+import com.acme.orders.domain.valueobject.Money;
+import com.acme.orders.domain.valueobject.Quantity;
+import com.acme.orders.domain.service.NoDiscountPolicy;
 import java.time.Instant;
 import java.util.Currency;
 import java.util.Optional;
@@ -204,7 +204,7 @@ class OrderPersistenceAdapterTest {
     @Test
     @DisplayName("an order that was never saved is simply absent")
     void missingOrdersAreEmpty() {
-        assertThat(adapter.findById(com.acme.orders.domain.model.order.OrderId.newId())).isEmpty();
+        assertThat(adapter.findById(com.acme.orders.domain.valueobject.OrderId.newId())).isEmpty();
         assertThat(adapter.findById(UUID.randomUUID())).isEmpty();
     }
 

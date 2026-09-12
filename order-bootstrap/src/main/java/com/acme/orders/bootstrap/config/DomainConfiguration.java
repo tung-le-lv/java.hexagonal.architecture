@@ -1,8 +1,8 @@
 package com.acme.orders.bootstrap.config;
 
-import com.acme.orders.domain.policy.IDiscountPolicy;
-import com.acme.orders.domain.policy.TieredVolumeDiscountPolicy;
-import com.acme.orders.domain.model.shared.Money;
+import com.acme.orders.domain.service.IDiscountPolicy;
+import com.acme.orders.domain.service.TieredVolumeDiscountPolicy;
+import com.acme.orders.domain.valueobject.Money;
 import java.math.BigDecimal;
 import java.time.Clock;
 import java.util.Currency;

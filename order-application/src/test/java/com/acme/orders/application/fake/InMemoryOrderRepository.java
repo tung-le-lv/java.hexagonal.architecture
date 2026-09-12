@@ -1,10 +1,10 @@
 package com.acme.orders.application.fake;
 
 import com.acme.orders.application.exception.ConcurrentModificationException;
-import com.acme.orders.application.port.outbound.IOrderRepository;
-import com.acme.orders.domain.model.order.Order;
-import com.acme.orders.domain.model.order.OrderId;
-import com.acme.orders.domain.model.order.OrderSnapshot;
+import com.acme.orders.domain.repository.IOrderRepository;
+import com.acme.orders.domain.aggregate.Order;
+import com.acme.orders.domain.valueobject.OrderId;
+import com.acme.orders.domain.valueobject.OrderSnapshot;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;

@@ -3,9 +3,9 @@ package com.acme.orders.application.usecase;
 import com.acme.orders.application.port.inbound.ICancelOrderUseCase;
 import com.acme.orders.application.port.inbound.command.CancelOrderCommand;
 import com.acme.orders.application.port.outbound.IDomainEventPublisher;
-import com.acme.orders.application.port.outbound.IOrderRepository;
 import com.acme.orders.application.port.outbound.ITransactionRunner;
 import com.acme.orders.application.view.OrderView;
+import com.acme.orders.domain.repository.IOrderRepository;
 import java.time.Clock;
 import java.util.Objects;
 

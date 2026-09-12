@@ -1,7 +1,7 @@
 package com.acme.orders.domain.event;
 
-import com.acme.orders.domain.model.shared.Address;
-import com.acme.orders.domain.model.shared.IDomainEvent;
+import com.acme.orders.domain.valueobject.Address;
+import com.acme.orders.domain.event.IDomainEvent;
 import java.time.Instant;
 import java.util.UUID;
 

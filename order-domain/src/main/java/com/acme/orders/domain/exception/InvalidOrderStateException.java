@@ -1,6 +1,6 @@
 package com.acme.orders.domain.exception;
 
-import com.acme.orders.domain.model.order.OrderStatus;
+import com.acme.orders.domain.valueobject.OrderStatus;
 
 /** Raised when a command is issued against an order whose status does not permit it. */
 public class InvalidOrderStateException extends DomainException {

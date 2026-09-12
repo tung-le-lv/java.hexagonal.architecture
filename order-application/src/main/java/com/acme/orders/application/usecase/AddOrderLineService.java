@@ -3,12 +3,12 @@ package com.acme.orders.application.usecase;
 import com.acme.orders.application.port.inbound.IAddOrderLineUseCase;
 import com.acme.orders.application.port.inbound.command.AddOrderLineCommand;
 import com.acme.orders.application.port.outbound.IDomainEventPublisher;
-import com.acme.orders.application.port.outbound.IOrderRepository;
 import com.acme.orders.application.port.outbound.ITransactionRunner;
 import com.acme.orders.application.view.OrderView;
-import com.acme.orders.domain.model.order.ProductId;
-import com.acme.orders.domain.model.shared.Money;
-import com.acme.orders.domain.model.shared.Quantity;
+import com.acme.orders.domain.repository.IOrderRepository;
+import com.acme.orders.domain.valueobject.ProductId;
+import com.acme.orders.domain.valueobject.Money;
+import com.acme.orders.domain.valueobject.Quantity;
 import java.util.Objects;
 
 /** Puts a product on a draft order. Whether that appends a line or merges into one is the aggregate's call. */

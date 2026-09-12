@@ -8,7 +8,7 @@ import java.util.UUID;
 /**
  * A read model of an order, flat and serialisation-friendly.
  *
- * <p>Returning this instead of the {@link com.acme.orders.domain.model.order.Order} aggregate keeps
+ * <p>Returning this instead of the {@link com.acme.orders.domain.aggregate.Order} aggregate keeps
  * the aggregate out of HTTP responses: inbound adapters cannot accidentally couple to the model's
  * shape, and the model can be refactored without breaking the API.
  */

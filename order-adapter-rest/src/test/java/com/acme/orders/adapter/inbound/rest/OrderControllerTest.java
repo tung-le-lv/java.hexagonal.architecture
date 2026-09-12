@@ -26,7 +26,7 @@ import com.acme.orders.application.view.OrderView;
 import com.acme.orders.application.view.Page;
 import com.acme.orders.domain.exception.EmptyOrderException;
 import com.acme.orders.domain.exception.InvalidOrderStateException;
-import com.acme.orders.domain.model.order.OrderStatus;
+import com.acme.orders.domain.valueobject.OrderStatus;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.List;

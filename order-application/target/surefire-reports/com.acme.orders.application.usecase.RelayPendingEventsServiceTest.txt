@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.acme.orders.application.usecase.RelayPendingEventsServiceTest
--------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s -- in com.acme.orders.application.usecase.RelayPendingEventsServiceTest

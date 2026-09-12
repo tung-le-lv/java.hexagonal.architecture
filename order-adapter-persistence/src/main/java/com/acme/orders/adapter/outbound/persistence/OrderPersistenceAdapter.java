@@ -5,12 +5,12 @@ import com.acme.orders.adapter.outbound.persistence.mapper.OrderPersistenceMappe
 import com.acme.orders.adapter.outbound.persistence.repository.IOrderJpaRepository;
 import com.acme.orders.application.exception.ConcurrentModificationException;
 import com.acme.orders.application.port.outbound.IOrderQueryRepository;
-import com.acme.orders.application.port.outbound.IOrderRepository;
 import com.acme.orders.application.view.OrderSummaryView;
 import com.acme.orders.application.view.OrderView;
 import com.acme.orders.application.view.Page;
-import com.acme.orders.domain.model.order.Order;
-import com.acme.orders.domain.model.order.OrderId;
+import com.acme.orders.domain.repository.IOrderRepository;
+import com.acme.orders.domain.aggregate.Order;
+import com.acme.orders.domain.valueobject.OrderId;
 import java.util.Optional;
 import java.util.UUID;
 import org.springframework.dao.OptimisticLockingFailureException;

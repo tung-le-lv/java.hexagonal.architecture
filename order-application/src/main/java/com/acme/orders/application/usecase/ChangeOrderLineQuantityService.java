@@ -3,11 +3,11 @@ package com.acme.orders.application.usecase;
 import com.acme.orders.application.port.inbound.IChangeOrderLineQuantityUseCase;
 import com.acme.orders.application.port.inbound.command.ChangeOrderLineQuantityCommand;
 import com.acme.orders.application.port.outbound.IDomainEventPublisher;
-import com.acme.orders.application.port.outbound.IOrderRepository;
 import com.acme.orders.application.port.outbound.ITransactionRunner;
 import com.acme.orders.application.view.OrderView;
-import com.acme.orders.domain.model.order.OrderLineId;
-import com.acme.orders.domain.model.shared.Quantity;
+import com.acme.orders.domain.repository.IOrderRepository;
+import com.acme.orders.domain.valueobject.OrderLineId;
+import com.acme.orders.domain.valueobject.Quantity;
 import java.util.Objects;
 
 /** Sets a line's quantity to an exact value. */

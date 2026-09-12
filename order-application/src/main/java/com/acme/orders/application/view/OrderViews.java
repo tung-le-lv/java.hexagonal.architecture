@@ -1,8 +1,8 @@
 package com.acme.orders.application.view;
 
-import com.acme.orders.domain.model.order.Order;
-import com.acme.orders.domain.model.order.OrderLine;
-import com.acme.orders.domain.model.shared.Address;
+import com.acme.orders.domain.aggregate.Order;
+import com.acme.orders.domain.aggregate.OrderLine;
+import com.acme.orders.domain.valueobject.Address;
 
 /**
  * Turns an {@link Order} aggregate into its read model.
