@@ -1,9 +1,9 @@
 package com.acme.orders.adapter.outbound.persistence;
 
 import com.acme.orders.adapter.outbound.persistence.entity.OutboxMessageJpaEntity;
-import com.acme.orders.adapter.outbound.persistence.repository.OutboxJpaRepository;
-import com.acme.orders.application.port.outbound.DomainEventPublisher;
-import com.acme.orders.domain.model.shared.DomainEvent;
+import com.acme.orders.adapter.outbound.persistence.repository.IOutboxJpaRepository;
+import com.acme.orders.application.port.outbound.IDomainEventPublisher;
+import com.acme.orders.domain.model.shared.IDomainEvent;
 import tools.jackson.core.JacksonException;
 import tools.jackson.databind.ObjectMapper;
 import java.util.List;
@@ -20,28 +20,28 @@ import org.springframework.transaction.annotation.Transactional;
  * quietly commit events for a write that might still roll back.
  */
 @Component
-public class OutboxDomainEventPublisher implements DomainEventPublisher {
+public class OutboxDomainEventPublisher implements IDomainEventPublisher {
 
     private static final String AGGREGATE_TYPE = "Order";
 
-    private final OutboxJpaRepository outbox;
+    private final IOutboxJpaRepository outbox;
     private final ObjectMapper objectMapper;
 
-    public OutboxDomainEventPublisher(OutboxJpaRepository outbox, ObjectMapper objectMapper) {
+    public OutboxDomainEventPublisher(IOutboxJpaRepository outbox, ObjectMapper objectMapper) {
         this.outbox = outbox;
         this.objectMapper = objectMapper;
     }
 
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
-    public void publish(List<DomainEvent> events) {
+    public void publish(List<IDomainEvent> events) {
         if (events.isEmpty()) {
             return;
         }
         outbox.saveAll(events.stream().map(this::toOutboxMessage).toList());
     }
 
-    private OutboxMessageJpaEntity toOutboxMessage(DomainEvent event) {
+    private OutboxMessageJpaEntity toOutboxMessage(IDomainEvent event) {
         return OutboxMessageJpaEntity.pending(
                 event.eventId() == null ? UUID.randomUUID() : event.eventId(),
                 AGGREGATE_TYPE,
@@ -51,7 +51,7 @@ public class OutboxDomainEventPublisher implements DomainEventPublisher {
                 event.occurredAt());
     }
 
-    private String serialise(DomainEvent event) {
+    private String serialise(IDomainEvent event) {
         try {
             return objectMapper.writeValueAsString(event);
         } catch (JacksonException cause) {

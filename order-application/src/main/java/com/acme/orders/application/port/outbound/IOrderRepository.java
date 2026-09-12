@@ -12,7 +12,7 @@ import java.util.Optional;
  * deliberately offers no query methods, no partial updates and no lazy handles: an aggregate is
  * loaded and saved whole, because that is the unit its invariants hold over.
  */
-public interface OrderRepository {
+public interface IOrderRepository {
 
     Optional<Order> findById(OrderId orderId);
 

@@ -1,6 +1,6 @@
 package com.acme.orders.domain.event;
 
-import com.acme.orders.domain.model.shared.DomainEvent;
+import com.acme.orders.domain.model.shared.IDomainEvent;
 import com.acme.orders.domain.model.shared.Money;
 import java.time.Instant;
 import java.util.UUID;
@@ -12,7 +12,7 @@ public record OrderPaid(
         UUID orderId,
         UUID customerId,
         Money amountPaid,
-        String paymentReference) implements DomainEvent {
+        String paymentReference) implements IDomainEvent {
 
     public static OrderPaid of(UUID orderId, UUID customerId, Money amountPaid, String paymentReference, Instant occurredAt) {
         return new OrderPaid(UUID.randomUUID(), occurredAt, orderId, customerId, amountPaid, paymentReference);

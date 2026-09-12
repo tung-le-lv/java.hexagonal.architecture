@@ -1,6 +1,6 @@
 package com.acme.orders.domain.event;
 
-import com.acme.orders.domain.model.shared.DomainEvent;
+import com.acme.orders.domain.model.shared.IDomainEvent;
 import java.time.Instant;
 import java.util.UUID;
 
@@ -9,7 +9,7 @@ public record OrderDelivered(
         UUID eventId,
         Instant occurredAt,
         UUID orderId,
-        UUID customerId) implements DomainEvent {
+        UUID customerId) implements IDomainEvent {
 
     public static OrderDelivered of(UUID orderId, UUID customerId, Instant occurredAt) {
         return new OrderDelivered(UUID.randomUUID(), occurredAt, orderId, customerId);

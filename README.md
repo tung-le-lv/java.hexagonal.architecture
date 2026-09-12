@@ -15,10 +15,10 @@ A **port** is an interface owned by the application layer, written in the applic
 vocabulary. There are two kinds, and the difference is about who calls whom:
 
 - **Input ports** (`order-application/.../port/inbound`) are the operations the application offers to
-  the outside world — `PlaceOrderUseCase`, `PayOrderUseCase`, `GetOrderQuery`. Something from
+  the outside world — `IPlaceOrderUseCase`, `IPayOrderUseCase`, `IGetOrderQuery`. Something from
   outside calls *into* these.
 - **Output ports** (`order-application/.../port/outbound`) are the capabilities the application needs
-  from the outside world — `OrderRepository`, `DomainEventPublisher`, `TransactionRunner`. The
+  from the outside world — `IOrderRepository`, `IDomainEventPublisher`, `ITransactionRunner`. The
   application calls *out* through these.
 
 Both kinds are interfaces with no implementation and no framework type in their signatures. An
@@ -33,10 +33,10 @@ vocabulary and some external technology's vocabulary.
 
 - **Driving adapters** sit on the input side and call a use case. `order-adapter-rest`'s
   `OrderController` is one: it turns an HTTP request into a `PlaceOrderCommand`, calls
-  `PlaceOrderUseCase.placeOrder(...)`, and turns the result back into JSON.
+  `IPlaceOrderUseCase.placeOrder(...)`, and turns the result back into JSON.
 - **Driven adapters** sit on the output side and implement an output port.
-  `order-adapter-persistence`'s `OrderPersistenceAdapter` implements `OrderRepository` with JPA;
-  `order-adapter-messaging`'s `LoggingEventMessagePublisher` implements `EventMessagePublisher`.
+  `order-adapter-persistence`'s `OrderPersistenceAdapter` implements `IOrderRepository` with JPA;
+  `order-adapter-messaging`'s `LoggingEventMessagePublisher` implements `IEventMessagePublisher`.
 
 Neither kind of adapter calls the other directly, and neither kind knows the other exists. A
 driving adapter depends only on input ports; a driven adapter depends only on output ports it
@@ -107,8 +107,8 @@ case, constructing each one by hand from its output-port dependencies:
 
 ```java
 @Bean
-PlaceOrderUseCase placeOrderUseCase(OrderRepository orders, DomainEventPublisher events,
-                                     TransactionRunner transactions, DiscountPolicy discountPolicy, Clock clock) {
+IPlaceOrderUseCase placeOrderUseCase(IOrderRepository orders, IDomainEventPublisher events,
+                                     ITransactionRunner transactions, IDiscountPolicy discountPolicy, Clock clock) {
     return new PlaceOrderService(orders, events, transactions, discountPolicy, clock);
 }
 ```
@@ -122,7 +122,7 @@ cost of one configuration class.
 
 The same applies to the transaction boundary: no use case carries `@Transactional`, because that
 annotation is a framework dependency too. Instead `order-application` declares a
-`TransactionRunner` output port, and `order-adapter-persistence` supplies
+`ITransactionRunner` output port, and `order-adapter-persistence` supplies
 `SpringTransactionRunner` as its implementation. Every use case calls
 `executor.apply(orderId, ...)`, which opens exactly one `transactions.inTransaction(...)` around
 loading the aggregate, applying the command, and saving it — the use case still controls precisely

@@ -6,7 +6,7 @@ package com.acme.orders.application.port.outbound;
  * <p>Whether that is Kafka, RabbitMQ, SNS or a log line is entirely the adapter's business; the core
  * only requires that a normal return means the event was accepted, and an exception means it was not.
  */
-public interface EventMessagePublisher {
+public interface IEventMessagePublisher {
 
     /**
      * Delivers one event.

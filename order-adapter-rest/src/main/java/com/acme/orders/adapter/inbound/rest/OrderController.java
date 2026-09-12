@@ -10,18 +10,18 @@ import com.acme.orders.adapter.inbound.rest.dto.PagedResponse;
 import com.acme.orders.adapter.inbound.rest.dto.PayOrderRequest;
 import com.acme.orders.adapter.inbound.rest.dto.ShipOrderRequest;
 import com.acme.orders.adapter.inbound.rest.mapper.OrderRestMapper;
-import com.acme.orders.application.port.inbound.AddOrderLineUseCase;
-import com.acme.orders.application.port.inbound.CancelOrderUseCase;
-import com.acme.orders.application.port.inbound.ChangeOrderLineQuantityUseCase;
-import com.acme.orders.application.port.inbound.CreateDraftOrderUseCase;
-import com.acme.orders.application.port.inbound.PayOrderUseCase;
-import com.acme.orders.application.port.inbound.PlaceOrderUseCase;
-import com.acme.orders.application.port.inbound.RemoveOrderLineUseCase;
-import com.acme.orders.application.port.inbound.ShipOrderUseCase;
+import com.acme.orders.application.port.inbound.IAddOrderLineUseCase;
+import com.acme.orders.application.port.inbound.ICancelOrderUseCase;
+import com.acme.orders.application.port.inbound.IChangeOrderLineQuantityUseCase;
+import com.acme.orders.application.port.inbound.ICreateDraftOrderUseCase;
+import com.acme.orders.application.port.inbound.IPayOrderUseCase;
+import com.acme.orders.application.port.inbound.IPlaceOrderUseCase;
+import com.acme.orders.application.port.inbound.IRemoveOrderLineUseCase;
+import com.acme.orders.application.port.inbound.IShipOrderUseCase;
 import com.acme.orders.application.port.inbound.command.PlaceOrderCommand;
 import com.acme.orders.application.port.inbound.command.RemoveOrderLineCommand;
-import com.acme.orders.application.port.inbound.query.GetOrderQuery;
-import com.acme.orders.application.port.inbound.query.ListCustomerOrdersQuery;
+import com.acme.orders.application.port.inbound.query.IGetOrderQuery;
+import com.acme.orders.application.port.inbound.query.IListCustomerOrdersQuery;
 import com.acme.orders.application.view.OrderView;
 import jakarta.validation.Valid;
 import java.net.URI;
@@ -50,27 +50,27 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/orders")
 public class OrderController {
 
-    private final CreateDraftOrderUseCase createDraftOrder;
-    private final AddOrderLineUseCase addOrderLine;
-    private final ChangeOrderLineQuantityUseCase changeOrderLineQuantity;
-    private final RemoveOrderLineUseCase removeOrderLine;
-    private final PlaceOrderUseCase placeOrder;
-    private final PayOrderUseCase payOrder;
-    private final ShipOrderUseCase shipOrder;
-    private final CancelOrderUseCase cancelOrder;
-    private final GetOrderQuery getOrder;
-    private final ListCustomerOrdersQuery listCustomerOrders;
+    private final ICreateDraftOrderUseCase createDraftOrder;
+    private final IAddOrderLineUseCase addOrderLine;
+    private final IChangeOrderLineQuantityUseCase changeOrderLineQuantity;
+    private final IRemoveOrderLineUseCase removeOrderLine;
+    private final IPlaceOrderUseCase placeOrder;
+    private final IPayOrderUseCase payOrder;
+    private final IShipOrderUseCase shipOrder;
+    private final ICancelOrderUseCase cancelOrder;
+    private final IGetOrderQuery getOrder;
+    private final IListCustomerOrdersQuery listCustomerOrders;
 
-    public OrderController(CreateDraftOrderUseCase createDraftOrder,
-                           AddOrderLineUseCase addOrderLine,
-                           ChangeOrderLineQuantityUseCase changeOrderLineQuantity,
-                           RemoveOrderLineUseCase removeOrderLine,
-                           PlaceOrderUseCase placeOrder,
-                           PayOrderUseCase payOrder,
-                           ShipOrderUseCase shipOrder,
-                           CancelOrderUseCase cancelOrder,
-                           GetOrderQuery getOrder,
-                           ListCustomerOrdersQuery listCustomerOrders) {
+    public OrderController(ICreateDraftOrderUseCase createDraftOrder,
+                           IAddOrderLineUseCase addOrderLine,
+                           IChangeOrderLineQuantityUseCase changeOrderLineQuantity,
+                           IRemoveOrderLineUseCase removeOrderLine,
+                           IPlaceOrderUseCase placeOrder,
+                           IPayOrderUseCase payOrder,
+                           IShipOrderUseCase shipOrder,
+                           ICancelOrderUseCase cancelOrder,
+                           IGetOrderQuery getOrder,
+                           IListCustomerOrdersQuery listCustomerOrders) {
         this.createDraftOrder = createDraftOrder;
         this.addOrderLine = addOrderLine;
         this.changeOrderLineQuantity = changeOrderLineQuantity;

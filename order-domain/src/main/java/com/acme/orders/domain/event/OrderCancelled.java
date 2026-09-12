@@ -1,7 +1,7 @@
 package com.acme.orders.domain.event;
 
 import com.acme.orders.domain.model.order.OrderStatus;
-import com.acme.orders.domain.model.shared.DomainEvent;
+import com.acme.orders.domain.model.shared.IDomainEvent;
 import java.time.Instant;
 import java.util.UUID;
 
@@ -15,7 +15,7 @@ public record OrderCancelled(
         UUID orderId,
         UUID customerId,
         OrderStatus cancelledFrom,
-        String reason) implements DomainEvent {
+        String reason) implements IDomainEvent {
 
     public static OrderCancelled of(UUID orderId, UUID customerId, OrderStatus cancelledFrom, String reason, Instant occurredAt) {
         return new OrderCancelled(UUID.randomUUID(), occurredAt, orderId, customerId, cancelledFrom, reason);

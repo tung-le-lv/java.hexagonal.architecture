@@ -18,9 +18,9 @@ import com.acme.orders.domain.exception.EmptyOrderException;
 import com.acme.orders.domain.exception.InvalidOrderStateException;
 import com.acme.orders.domain.exception.MissingOrderDetailException;
 import com.acme.orders.domain.exception.OrderLimitExceededException;
-import com.acme.orders.domain.model.shared.DomainEvent;
+import com.acme.orders.domain.model.shared.IDomainEvent;
 import com.acme.orders.domain.model.shared.Money;
-import com.acme.orders.domain.policy.DiscountPolicy;
+import com.acme.orders.domain.policy.IDiscountPolicy;
 import com.acme.orders.domain.policy.NoDiscountPolicy;
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -30,7 +30,7 @@ import org.junit.jupiter.api.Test;
 
 class OrderLifecycleTest {
 
-    private static final DiscountPolicy NO_DISCOUNT = new NoDiscountPolicy();
+    private static final IDiscountPolicy NO_DISCOUNT = new NoDiscountPolicy();
     private static final Instant PLACED_AT = T0.plusSeconds(60);
 
     @Test
@@ -43,7 +43,7 @@ class OrderLifecycleTest {
         assertThat(order.status()).isEqualTo(OrderStatus.PLACED);
         assertThat(order.placedAt()).contains(PLACED_AT);
 
-        List<DomainEvent> events = order.pendingEvents();
+        List<IDomainEvent> events = order.pendingEvents();
         assertThat(events).hasSize(1);
         OrderPlaced placed = (OrderPlaced) events.get(0);
         assertThat(placed.orderId()).isEqualTo(order.id().value());

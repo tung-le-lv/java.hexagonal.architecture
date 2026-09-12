@@ -1,10 +1,10 @@
 package com.acme.orders.application.usecase;
 
-import com.acme.orders.application.port.inbound.RelayPendingEventsUseCase;
-import com.acme.orders.application.port.outbound.EventMessagePublisher;
+import com.acme.orders.application.port.inbound.IRelayPendingEventsUseCase;
+import com.acme.orders.application.port.outbound.IEventMessagePublisher;
 import com.acme.orders.application.port.outbound.PendingEventMessage;
-import com.acme.orders.application.port.outbound.PendingEventStore;
-import com.acme.orders.application.port.outbound.TransactionRunner;
+import com.acme.orders.application.port.outbound.IPendingEventStore;
+import com.acme.orders.application.port.outbound.ITransactionRunner;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,14 +16,14 @@ import java.util.Objects;
  * at-least-once: a publish that succeeds just before the marking transaction fails will be retried,
  * which is why events carry a stable {@code eventId} for consumers to deduplicate on.
  */
-public class RelayPendingEventsService implements RelayPendingEventsUseCase {
+public class RelayPendingEventsService implements IRelayPendingEventsUseCase {
 
-    private final PendingEventStore pendingEvents;
-    private final EventMessagePublisher publisher;
-    private final TransactionRunner transactions;
+    private final IPendingEventStore pendingEvents;
+    private final IEventMessagePublisher publisher;
+    private final ITransactionRunner transactions;
 
-    public RelayPendingEventsService(PendingEventStore pendingEvents, EventMessagePublisher publisher,
-                                     TransactionRunner transactions) {
+    public RelayPendingEventsService(IPendingEventStore pendingEvents, IEventMessagePublisher publisher,
+                                     ITransactionRunner transactions) {
         this.pendingEvents = Objects.requireNonNull(pendingEvents, "pendingEvents must not be null");
         this.publisher = Objects.requireNonNull(publisher, "publisher must not be null");
         this.transactions = Objects.requireNonNull(transactions, "transactions must not be null");

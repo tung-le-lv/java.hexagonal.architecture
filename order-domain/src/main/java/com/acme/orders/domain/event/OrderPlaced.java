@@ -1,6 +1,6 @@
 package com.acme.orders.domain.event;
 
-import com.acme.orders.domain.model.shared.DomainEvent;
+import com.acme.orders.domain.model.shared.IDomainEvent;
 import com.acme.orders.domain.model.shared.Money;
 import java.time.Instant;
 import java.util.List;
@@ -18,7 +18,7 @@ public record OrderPlaced(
         Money subtotal,
         Money discount,
         Money total,
-        List<PlacedLine> lines) implements DomainEvent {
+        List<PlacedLine> lines) implements IDomainEvent {
 
     public OrderPlaced {
         lines = List.copyOf(lines);

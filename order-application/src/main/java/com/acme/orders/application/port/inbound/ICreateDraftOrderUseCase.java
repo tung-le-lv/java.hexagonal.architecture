@@ -9,7 +9,7 @@ import com.acme.orders.application.view.OrderView;
  * <p>One interface per use case rather than one wide "OrderService". An inbound adapter then depends
  * only on the operation it actually drives, and a test double only has to fake that one method.
  */
-public interface CreateDraftOrderUseCase {
+public interface ICreateDraftOrderUseCase {
 
     OrderView createDraftOrder(CreateDraftOrderCommand command);
 }

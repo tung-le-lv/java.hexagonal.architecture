@@ -7,7 +7,7 @@ package com.acme.orders.application.port.inbound;
  * recorded must eventually be delivered" is a guarantee the application makes. Whatever triggers it —
  * a scheduler, a queue worker, an admin endpoint, a test — is then just another driving adapter.
  */
-public interface RelayPendingEventsUseCase {
+public interface IRelayPendingEventsUseCase {
 
     /**
      * Attempts to relay up to {@code batchSize} events.

@@ -4,7 +4,7 @@ import com.acme.orders.application.port.inbound.command.ChangeOrderLineQuantityC
 import com.acme.orders.application.view.OrderView;
 
 /** Driving port: sets a line's quantity. */
-public interface ChangeOrderLineQuantityUseCase {
+public interface IChangeOrderLineQuantityUseCase {
 
     OrderView changeOrderLineQuantity(ChangeOrderLineQuantityCommand command);
 }

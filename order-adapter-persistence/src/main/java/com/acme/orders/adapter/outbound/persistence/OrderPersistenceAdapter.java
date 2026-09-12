@@ -2,10 +2,10 @@ package com.acme.orders.adapter.outbound.persistence;
 
 import com.acme.orders.adapter.outbound.persistence.entity.OrderJpaEntity;
 import com.acme.orders.adapter.outbound.persistence.mapper.OrderPersistenceMapper;
-import com.acme.orders.adapter.outbound.persistence.repository.OrderJpaRepository;
+import com.acme.orders.adapter.outbound.persistence.repository.IOrderJpaRepository;
 import com.acme.orders.application.exception.ConcurrentModificationException;
-import com.acme.orders.application.port.outbound.OrderQueryRepository;
-import com.acme.orders.application.port.outbound.OrderRepository;
+import com.acme.orders.application.port.outbound.IOrderQueryRepository;
+import com.acme.orders.application.port.outbound.IOrderRepository;
 import com.acme.orders.application.view.OrderSummaryView;
 import com.acme.orders.application.view.OrderView;
 import com.acme.orders.application.view.Page;
@@ -28,11 +28,11 @@ import org.springframework.transaction.annotation.Transactional;
  * of the core's de facto contract.
  */
 @Component
-public class OrderPersistenceAdapter implements OrderRepository, OrderQueryRepository {
+public class OrderPersistenceAdapter implements IOrderRepository, IOrderQueryRepository {
 
-    private final OrderJpaRepository orders;
+    private final IOrderJpaRepository orders;
 
-    public OrderPersistenceAdapter(OrderJpaRepository orders) {
+    public OrderPersistenceAdapter(IOrderJpaRepository orders) {
         this.orders = orders;
     }
 

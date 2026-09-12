@@ -1,21 +1,21 @@
 package com.acme.orders.application.usecase;
 
-import com.acme.orders.application.port.inbound.RemoveOrderLineUseCase;
+import com.acme.orders.application.port.inbound.IRemoveOrderLineUseCase;
 import com.acme.orders.application.port.inbound.command.RemoveOrderLineCommand;
-import com.acme.orders.application.port.outbound.DomainEventPublisher;
-import com.acme.orders.application.port.outbound.OrderRepository;
-import com.acme.orders.application.port.outbound.TransactionRunner;
+import com.acme.orders.application.port.outbound.IDomainEventPublisher;
+import com.acme.orders.application.port.outbound.IOrderRepository;
+import com.acme.orders.application.port.outbound.ITransactionRunner;
 import com.acme.orders.application.view.OrderView;
 import com.acme.orders.domain.model.order.OrderLineId;
 import java.util.Objects;
 
 /** Takes a line off a draft order. */
-public class RemoveOrderLineService implements RemoveOrderLineUseCase {
+public class RemoveOrderLineService implements IRemoveOrderLineUseCase {
 
     private final OrderCommandExecutor executor;
 
-    public RemoveOrderLineService(OrderRepository orders, DomainEventPublisher eventPublisher,
-                                  TransactionRunner transactions) {
+    public RemoveOrderLineService(IOrderRepository orders, IDomainEventPublisher eventPublisher,
+                                  ITransactionRunner transactions) {
         this.executor = new OrderCommandExecutor(orders, eventPublisher, transactions);
     }
 

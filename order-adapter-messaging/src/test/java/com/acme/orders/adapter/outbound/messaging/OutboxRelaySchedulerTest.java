@@ -3,7 +3,7 @@ package com.acme.orders.adapter.outbound.messaging;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 
-import com.acme.orders.application.port.inbound.RelayPendingEventsUseCase;
+import com.acme.orders.application.port.inbound.IRelayPendingEventsUseCase;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,7 +14,7 @@ class OutboxRelaySchedulerTest {
     @DisplayName("each tick asks the use case to drain one batch")
     void delegatesToTheUseCase() {
         AtomicInteger requestedBatchSize = new AtomicInteger();
-        RelayPendingEventsUseCase relay = batchSize -> {
+        IRelayPendingEventsUseCase relay = batchSize -> {
             requestedBatchSize.set(batchSize);
             return batchSize;
         };
@@ -27,7 +27,7 @@ class OutboxRelaySchedulerTest {
     @Test
     @DisplayName("a failing run is swallowed, because an escaping exception would kill the schedule")
     void failuresDoNotKillTheSchedule() {
-        RelayPendingEventsUseCase failing = batchSize -> {
+        IRelayPendingEventsUseCase failing = batchSize -> {
             throw new IllegalStateException("broker unavailable");
         };
 

@@ -8,8 +8,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.acme.orders.application.port.inbound.RelayPendingEventsUseCase;
-import com.acme.orders.application.port.outbound.PendingEventStore;
+import com.acme.orders.application.port.inbound.IRelayPendingEventsUseCase;
+import com.acme.orders.application.port.outbound.IPendingEventStore;
 import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.ObjectMapper;
 import java.util.UUID;
@@ -41,10 +41,10 @@ class OrderApiIntegrationTest {
     private ObjectMapper objectMapper;
 
     @Autowired
-    private PendingEventStore pendingEvents;
+    private IPendingEventStore pendingEvents;
 
     @Autowired
-    private RelayPendingEventsUseCase relayPendingEvents;
+    private IRelayPendingEventsUseCase relayPendingEvents;
 
     @Test
     @DisplayName("a customer can assemble, place, pay for and track an order over HTTP")

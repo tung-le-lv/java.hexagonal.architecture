@@ -11,7 +11,7 @@ import java.util.function.Supplier;
  * Spring dependency in the middle of the hexagon and make the boundary invisible at the call site,
  * where it matters most.
  */
-public interface TransactionRunner {
+public interface ITransactionRunner {
 
     <T> T inTransaction(Supplier<T> work);
 

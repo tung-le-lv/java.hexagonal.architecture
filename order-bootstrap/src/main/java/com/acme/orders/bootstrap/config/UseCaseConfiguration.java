@@ -1,22 +1,22 @@
 package com.acme.orders.bootstrap.config;
 
-import com.acme.orders.application.port.inbound.AddOrderLineUseCase;
-import com.acme.orders.application.port.inbound.CancelOrderUseCase;
-import com.acme.orders.application.port.inbound.ChangeOrderLineQuantityUseCase;
-import com.acme.orders.application.port.inbound.CreateDraftOrderUseCase;
-import com.acme.orders.application.port.inbound.PayOrderUseCase;
-import com.acme.orders.application.port.inbound.PlaceOrderUseCase;
-import com.acme.orders.application.port.inbound.RelayPendingEventsUseCase;
-import com.acme.orders.application.port.inbound.RemoveOrderLineUseCase;
-import com.acme.orders.application.port.inbound.ShipOrderUseCase;
-import com.acme.orders.application.port.inbound.query.GetOrderQuery;
-import com.acme.orders.application.port.inbound.query.ListCustomerOrdersQuery;
-import com.acme.orders.application.port.outbound.DomainEventPublisher;
-import com.acme.orders.application.port.outbound.EventMessagePublisher;
-import com.acme.orders.application.port.outbound.OrderQueryRepository;
-import com.acme.orders.application.port.outbound.OrderRepository;
-import com.acme.orders.application.port.outbound.PendingEventStore;
-import com.acme.orders.application.port.outbound.TransactionRunner;
+import com.acme.orders.application.port.inbound.IAddOrderLineUseCase;
+import com.acme.orders.application.port.inbound.ICancelOrderUseCase;
+import com.acme.orders.application.port.inbound.IChangeOrderLineQuantityUseCase;
+import com.acme.orders.application.port.inbound.ICreateDraftOrderUseCase;
+import com.acme.orders.application.port.inbound.IPayOrderUseCase;
+import com.acme.orders.application.port.inbound.IPlaceOrderUseCase;
+import com.acme.orders.application.port.inbound.IRelayPendingEventsUseCase;
+import com.acme.orders.application.port.inbound.IRemoveOrderLineUseCase;
+import com.acme.orders.application.port.inbound.IShipOrderUseCase;
+import com.acme.orders.application.port.inbound.query.IGetOrderQuery;
+import com.acme.orders.application.port.inbound.query.IListCustomerOrdersQuery;
+import com.acme.orders.application.port.outbound.IDomainEventPublisher;
+import com.acme.orders.application.port.outbound.IEventMessagePublisher;
+import com.acme.orders.application.port.outbound.IOrderQueryRepository;
+import com.acme.orders.application.port.outbound.IOrderRepository;
+import com.acme.orders.application.port.outbound.IPendingEventStore;
+import com.acme.orders.application.port.outbound.ITransactionRunner;
 import com.acme.orders.application.usecase.AddOrderLineService;
 import com.acme.orders.application.usecase.CancelOrderService;
 import com.acme.orders.application.usecase.ChangeOrderLineQuantityService;
@@ -27,7 +27,7 @@ import com.acme.orders.application.usecase.PlaceOrderService;
 import com.acme.orders.application.usecase.RelayPendingEventsService;
 import com.acme.orders.application.usecase.RemoveOrderLineService;
 import com.acme.orders.application.usecase.ShipOrderService;
-import com.acme.orders.domain.policy.DiscountPolicy;
+import com.acme.orders.domain.policy.IDiscountPolicy;
 import java.time.Clock;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -44,57 +44,57 @@ import org.springframework.context.annotation.Configuration;
 public class UseCaseConfiguration {
 
     @Bean
-    CreateDraftOrderUseCase createDraftOrderUseCase(OrderRepository orders, DomainEventPublisher events,
-                                                    TransactionRunner transactions, Clock clock) {
+    ICreateDraftOrderUseCase createDraftOrderUseCase(IOrderRepository orders, IDomainEventPublisher events,
+                                                    ITransactionRunner transactions, Clock clock) {
         return new CreateDraftOrderService(orders, events, transactions, clock);
     }
 
     @Bean
-    AddOrderLineUseCase addOrderLineUseCase(OrderRepository orders, DomainEventPublisher events,
-                                            TransactionRunner transactions) {
+    IAddOrderLineUseCase addOrderLineUseCase(IOrderRepository orders, IDomainEventPublisher events,
+                                            ITransactionRunner transactions) {
         return new AddOrderLineService(orders, events, transactions);
     }
 
     @Bean
-    ChangeOrderLineQuantityUseCase changeOrderLineQuantityUseCase(OrderRepository orders, DomainEventPublisher events,
-                                                                  TransactionRunner transactions) {
+    IChangeOrderLineQuantityUseCase changeOrderLineQuantityUseCase(IOrderRepository orders, IDomainEventPublisher events,
+                                                                  ITransactionRunner transactions) {
         return new ChangeOrderLineQuantityService(orders, events, transactions);
     }
 
     @Bean
-    RemoveOrderLineUseCase removeOrderLineUseCase(OrderRepository orders, DomainEventPublisher events,
-                                                  TransactionRunner transactions) {
+    IRemoveOrderLineUseCase removeOrderLineUseCase(IOrderRepository orders, IDomainEventPublisher events,
+                                                  ITransactionRunner transactions) {
         return new RemoveOrderLineService(orders, events, transactions);
     }
 
     @Bean
-    PlaceOrderUseCase placeOrderUseCase(OrderRepository orders, DomainEventPublisher events,
-                                        TransactionRunner transactions, DiscountPolicy discountPolicy, Clock clock) {
+    IPlaceOrderUseCase placeOrderUseCase(IOrderRepository orders, IDomainEventPublisher events,
+                                        ITransactionRunner transactions, IDiscountPolicy discountPolicy, Clock clock) {
         return new PlaceOrderService(orders, events, transactions, discountPolicy, clock);
     }
 
     @Bean
-    PayOrderUseCase payOrderUseCase(OrderRepository orders, DomainEventPublisher events,
-                                    TransactionRunner transactions, Clock clock) {
+    IPayOrderUseCase payOrderUseCase(IOrderRepository orders, IDomainEventPublisher events,
+                                    ITransactionRunner transactions, Clock clock) {
         return new PayOrderService(orders, events, transactions, clock);
     }
 
     @Bean
-    ShipOrderUseCase shipOrderUseCase(OrderRepository orders, DomainEventPublisher events,
-                                      TransactionRunner transactions, Clock clock) {
+    IShipOrderUseCase shipOrderUseCase(IOrderRepository orders, IDomainEventPublisher events,
+                                      ITransactionRunner transactions, Clock clock) {
         return new ShipOrderService(orders, events, transactions, clock);
     }
 
     @Bean
-    CancelOrderUseCase cancelOrderUseCase(OrderRepository orders, DomainEventPublisher events,
-                                          TransactionRunner transactions, Clock clock) {
+    ICancelOrderUseCase cancelOrderUseCase(IOrderRepository orders, IDomainEventPublisher events,
+                                          ITransactionRunner transactions, Clock clock) {
         return new CancelOrderService(orders, events, transactions, clock);
     }
 
     @Bean
-    RelayPendingEventsUseCase relayPendingEventsUseCase(PendingEventStore pendingEvents,
-                                                        EventMessagePublisher publisher,
-                                                        TransactionRunner transactions) {
+    IRelayPendingEventsUseCase relayPendingEventsUseCase(IPendingEventStore pendingEvents,
+                                                        IEventMessagePublisher publisher,
+                                                        ITransactionRunner transactions) {
         return new RelayPendingEventsService(pendingEvents, publisher, transactions);
     }
 
@@ -102,11 +102,11 @@ public class UseCaseConfiguration {
      * One instance satisfies both read ports.
      *
      * <p>Registered once, under its implementation type: callers still inject
-     * {@link GetOrderQuery} or {@link ListCustomerOrdersQuery} and see only the port they need.
+     * {@link IGetOrderQuery} or {@link IListCustomerOrdersQuery} and see only the port they need.
      * Registering it again per port would make each port type ambiguous.
      */
     @Bean
-    OrderQueryService orderQueryService(OrderQueryRepository orderQueries) {
+    OrderQueryService orderQueryService(IOrderQueryRepository orderQueries) {
         return new OrderQueryService(orderQueries);
     }
 }

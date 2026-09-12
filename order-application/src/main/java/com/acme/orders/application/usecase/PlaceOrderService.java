@@ -1,12 +1,12 @@
 package com.acme.orders.application.usecase;
 
-import com.acme.orders.application.port.inbound.PlaceOrderUseCase;
+import com.acme.orders.application.port.inbound.IPlaceOrderUseCase;
 import com.acme.orders.application.port.inbound.command.PlaceOrderCommand;
-import com.acme.orders.application.port.outbound.DomainEventPublisher;
-import com.acme.orders.application.port.outbound.OrderRepository;
-import com.acme.orders.application.port.outbound.TransactionRunner;
+import com.acme.orders.application.port.outbound.IDomainEventPublisher;
+import com.acme.orders.application.port.outbound.IOrderRepository;
+import com.acme.orders.application.port.outbound.ITransactionRunner;
 import com.acme.orders.application.view.OrderView;
-import com.acme.orders.domain.policy.DiscountPolicy;
+import com.acme.orders.domain.policy.IDiscountPolicy;
 import java.time.Clock;
 import java.util.Objects;
 
@@ -19,14 +19,14 @@ import java.util.Objects;
  * {@link com.acme.orders.domain.model.order.Order#place} where they cannot be bypassed by a second
  * caller that forgets one.
  */
-public class PlaceOrderService implements PlaceOrderUseCase {
+public class PlaceOrderService implements IPlaceOrderUseCase {
 
     private final OrderCommandExecutor executor;
-    private final DiscountPolicy discountPolicy;
+    private final IDiscountPolicy discountPolicy;
     private final Clock clock;
 
-    public PlaceOrderService(OrderRepository orders, DomainEventPublisher eventPublisher,
-                             TransactionRunner transactions, DiscountPolicy discountPolicy, Clock clock) {
+    public PlaceOrderService(IOrderRepository orders, IDomainEventPublisher eventPublisher,
+                             ITransactionRunner transactions, IDiscountPolicy discountPolicy, Clock clock) {
         this.executor = new OrderCommandExecutor(orders, eventPublisher, transactions);
         this.discountPolicy = Objects.requireNonNull(discountPolicy, "discountPolicy must not be null");
         this.clock = Objects.requireNonNull(clock, "clock must not be null");

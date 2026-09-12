@@ -1,6 +1,6 @@
 package com.acme.orders.adapter.outbound.persistence;
 
-import com.acme.orders.application.port.outbound.TransactionRunner;
+import com.acme.orders.application.port.outbound.ITransactionRunner;
 import java.util.function.Supplier;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.support.TransactionTemplate;
@@ -13,7 +13,7 @@ import org.springframework.transaction.support.TransactionTemplate;
  * technically. Swapping to a different transaction manager is a change to this file alone.
  */
 @Component
-public class SpringTransactionRunner implements TransactionRunner {
+public class SpringTransactionRunner implements ITransactionRunner {
 
     private final TransactionTemplate transactionTemplate;
 

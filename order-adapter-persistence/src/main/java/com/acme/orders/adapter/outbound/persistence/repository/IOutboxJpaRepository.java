@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /** Spring Data access to the outbox table. */
-public interface OutboxJpaRepository extends JpaRepository<OutboxMessageJpaEntity, UUID> {
+public interface IOutboxJpaRepository extends JpaRepository<OutboxMessageJpaEntity, UUID> {
 
     /** Unpublished messages, oldest first, so events reach the broker in the order they happened. */
     List<OutboxMessageJpaEntity> findByPublishedAtIsNullOrderByOccurredAtAsc(Pageable pageable);

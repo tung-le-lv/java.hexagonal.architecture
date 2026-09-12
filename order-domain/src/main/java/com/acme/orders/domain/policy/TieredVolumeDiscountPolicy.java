@@ -14,7 +14,7 @@ import java.util.Objects;
  * an order in a different currency is rejected by {@link Money}'s own arithmetic rather than
  * silently mispriced.
  */
-public final class TieredVolumeDiscountPolicy implements DiscountPolicy {
+public final class TieredVolumeDiscountPolicy implements IDiscountPolicy {
 
     private final List<Tier> tiers;
 

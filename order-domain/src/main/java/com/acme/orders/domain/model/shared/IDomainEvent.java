@@ -10,7 +10,7 @@ import java.util.UUID;
  * timestamp the caller supplied: the domain never reads the system clock, so behaviour stays
  * deterministic and the core keeps no dependency on ambient infrastructure.
  */
-public interface DomainEvent {
+public interface IDomainEvent {
 
     UUID eventId();
 

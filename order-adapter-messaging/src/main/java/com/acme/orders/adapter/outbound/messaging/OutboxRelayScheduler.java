@@ -1,6 +1,6 @@
 package com.acme.orders.adapter.outbound.messaging;
 
-import com.acme.orders.application.port.inbound.RelayPendingEventsUseCase;
+import com.acme.orders.application.port.inbound.IRelayPendingEventsUseCase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,10 +21,10 @@ public class OutboxRelayScheduler {
 
     private static final Logger log = LoggerFactory.getLogger(OutboxRelayScheduler.class);
 
-    private final RelayPendingEventsUseCase relayPendingEvents;
+    private final IRelayPendingEventsUseCase relayPendingEvents;
     private final int batchSize;
 
-    public OutboxRelayScheduler(RelayPendingEventsUseCase relayPendingEvents,
+    public OutboxRelayScheduler(IRelayPendingEventsUseCase relayPendingEvents,
                                 @Value("${orders.outbox.relay.batch-size:50}") int batchSize) {
         this.relayPendingEvents = relayPendingEvents;
         this.batchSize = batchSize;

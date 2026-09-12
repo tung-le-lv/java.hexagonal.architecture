@@ -20,7 +20,7 @@ class TieredVolumeDiscountPolicyTest {
 
     private static final Currency EUR = Currency.getInstance("EUR");
 
-    private final DiscountPolicy policy = new TieredVolumeDiscountPolicy(List.of(
+    private final IDiscountPolicy policy = new TieredVolumeDiscountPolicy(List.of(
             new TieredVolumeDiscountPolicy.Tier(Money.of("200.00", "EUR"), BigDecimal.valueOf(5)),
             new TieredVolumeDiscountPolicy.Tier(Money.of("500.00", "EUR"), BigDecimal.valueOf(10))));
 
@@ -42,7 +42,7 @@ class TieredVolumeDiscountPolicyTest {
     @Test
     @DisplayName("a policy with no tiers is the same as no discount")
     void emptyPolicyChargesListPrice() {
-        DiscountPolicy empty = new TieredVolumeDiscountPolicy(List.of());
+        IDiscountPolicy empty = new TieredVolumeDiscountPolicy(List.of());
 
         assertThat(empty.discountFor(orderWorth("1000.00"))).isEqualTo(Money.zero(EUR));
     }

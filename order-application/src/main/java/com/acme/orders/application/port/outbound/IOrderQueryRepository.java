@@ -9,10 +9,10 @@ import java.util.UUID;
 /**
  * Driven port for the read side: returns projections, never aggregates.
  *
- * <p>Splitting this from {@link OrderRepository} lets the adapter answer queries however it is
+ * <p>Splitting this from {@link IOrderRepository} lets the adapter answer queries however it is
  * fastest — a join, a view, a denormalised table — without that choice reaching into the model.
  */
-public interface OrderQueryRepository {
+public interface IOrderQueryRepository {
 
     Optional<OrderView> findById(UUID orderId);
 

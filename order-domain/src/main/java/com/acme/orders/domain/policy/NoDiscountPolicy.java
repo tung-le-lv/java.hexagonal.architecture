@@ -4,7 +4,7 @@ import com.acme.orders.domain.model.order.Order;
 import com.acme.orders.domain.model.shared.Money;
 
 /** Charges list price. The neutral element, useful as a default and in tests. */
-public final class NoDiscountPolicy implements DiscountPolicy {
+public final class NoDiscountPolicy implements IDiscountPolicy {
 
     @Override
     public Money discountFor(Order order) {

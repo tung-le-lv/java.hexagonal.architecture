@@ -1,22 +1,22 @@
 package com.acme.orders.application.usecase;
 
-import com.acme.orders.application.port.inbound.ShipOrderUseCase;
+import com.acme.orders.application.port.inbound.IShipOrderUseCase;
 import com.acme.orders.application.port.inbound.command.ShipOrderCommand;
-import com.acme.orders.application.port.outbound.DomainEventPublisher;
-import com.acme.orders.application.port.outbound.OrderRepository;
-import com.acme.orders.application.port.outbound.TransactionRunner;
+import com.acme.orders.application.port.outbound.IDomainEventPublisher;
+import com.acme.orders.application.port.outbound.IOrderRepository;
+import com.acme.orders.application.port.outbound.ITransactionRunner;
 import com.acme.orders.application.view.OrderView;
 import java.time.Clock;
 import java.util.Objects;
 
 /** Records that a paid order has been handed to the carrier. */
-public class ShipOrderService implements ShipOrderUseCase {
+public class ShipOrderService implements IShipOrderUseCase {
 
     private final OrderCommandExecutor executor;
     private final Clock clock;
 
-    public ShipOrderService(OrderRepository orders, DomainEventPublisher eventPublisher,
-                            TransactionRunner transactions, Clock clock) {
+    public ShipOrderService(IOrderRepository orders, IDomainEventPublisher eventPublisher,
+                            ITransactionRunner transactions, Clock clock) {
         this.executor = new OrderCommandExecutor(orders, eventPublisher, transactions);
         this.clock = Objects.requireNonNull(clock, "clock must not be null");
     }

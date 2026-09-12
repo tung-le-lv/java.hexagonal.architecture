@@ -15,7 +15,7 @@ import com.acme.orders.domain.model.shared.Address;
 import com.acme.orders.domain.model.shared.AggregateRoot;
 import com.acme.orders.domain.model.shared.Money;
 import com.acme.orders.domain.model.shared.Quantity;
-import com.acme.orders.domain.policy.DiscountPolicy;
+import com.acme.orders.domain.policy.IDiscountPolicy;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -162,7 +162,7 @@ public class Order extends AggregateRoot<OrderId> {
      * change without touching the aggregate. Whatever the policy returns is still validated — the
      * order, not the policy, is responsible for never ending up with a nonsensical total.
      */
-    public void place(DiscountPolicy discountPolicy, Instant placedAt) {
+    public void place(IDiscountPolicy discountPolicy, Instant placedAt) {
         Objects.requireNonNull(discountPolicy, "discount policy must not be null");
         requireTransitionTo(OrderStatus.PLACED, "place");
         if (lines.isEmpty()) {

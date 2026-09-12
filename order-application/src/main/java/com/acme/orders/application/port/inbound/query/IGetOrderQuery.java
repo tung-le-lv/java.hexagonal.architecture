@@ -9,7 +9,7 @@ import java.util.UUID;
  * <p>Reads need no aggregate, no transaction boundary and no events, so routing them through the
  * same interfaces as writes would only force every caller to pay for machinery it does not use.
  */
-public interface GetOrderQuery {
+public interface IGetOrderQuery {
 
     OrderView byId(UUID orderId);
 }

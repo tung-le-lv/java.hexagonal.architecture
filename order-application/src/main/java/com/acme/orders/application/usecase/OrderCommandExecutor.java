@@ -1,9 +1,9 @@
 package com.acme.orders.application.usecase;
 
 import com.acme.orders.application.exception.OrderNotFoundException;
-import com.acme.orders.application.port.outbound.DomainEventPublisher;
-import com.acme.orders.application.port.outbound.OrderRepository;
-import com.acme.orders.application.port.outbound.TransactionRunner;
+import com.acme.orders.application.port.outbound.IDomainEventPublisher;
+import com.acme.orders.application.port.outbound.IOrderRepository;
+import com.acme.orders.application.port.outbound.ITransactionRunner;
 import com.acme.orders.application.view.OrderView;
 import com.acme.orders.application.view.OrderViews;
 import com.acme.orders.domain.model.order.Order;
@@ -22,11 +22,11 @@ import java.util.function.Supplier;
  */
 final class OrderCommandExecutor {
 
-    private final OrderRepository orders;
-    private final DomainEventPublisher eventPublisher;
-    private final TransactionRunner transactions;
+    private final IOrderRepository orders;
+    private final IDomainEventPublisher eventPublisher;
+    private final ITransactionRunner transactions;
 
-    OrderCommandExecutor(OrderRepository orders, DomainEventPublisher eventPublisher, TransactionRunner transactions) {
+    OrderCommandExecutor(IOrderRepository orders, IDomainEventPublisher eventPublisher, ITransactionRunner transactions) {
         this.orders = Objects.requireNonNull(orders, "orders must not be null");
         this.eventPublisher = Objects.requireNonNull(eventPublisher, "eventPublisher must not be null");
         this.transactions = Objects.requireNonNull(transactions, "transactions must not be null");

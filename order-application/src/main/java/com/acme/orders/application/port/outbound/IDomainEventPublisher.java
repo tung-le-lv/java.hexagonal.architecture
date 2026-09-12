@@ -1,6 +1,6 @@
 package com.acme.orders.application.port.outbound;
 
-import com.acme.orders.domain.model.shared.DomainEvent;
+import com.acme.orders.domain.model.shared.IDomainEvent;
 import java.util.List;
 
 /**
@@ -10,7 +10,7 @@ import java.util.List;
  * that is made reliable — an outbox table, a broker transaction — is the adapter's problem. The core
  * states only that the events must not be lost if the write commits.
  */
-public interface DomainEventPublisher {
+public interface IDomainEventPublisher {
 
-    void publish(List<DomainEvent> events);
+    void publish(List<IDomainEvent> events);
 }

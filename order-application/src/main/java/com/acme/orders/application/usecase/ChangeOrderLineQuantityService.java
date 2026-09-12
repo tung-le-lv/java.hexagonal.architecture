@@ -1,22 +1,22 @@
 package com.acme.orders.application.usecase;
 
-import com.acme.orders.application.port.inbound.ChangeOrderLineQuantityUseCase;
+import com.acme.orders.application.port.inbound.IChangeOrderLineQuantityUseCase;
 import com.acme.orders.application.port.inbound.command.ChangeOrderLineQuantityCommand;
-import com.acme.orders.application.port.outbound.DomainEventPublisher;
-import com.acme.orders.application.port.outbound.OrderRepository;
-import com.acme.orders.application.port.outbound.TransactionRunner;
+import com.acme.orders.application.port.outbound.IDomainEventPublisher;
+import com.acme.orders.application.port.outbound.IOrderRepository;
+import com.acme.orders.application.port.outbound.ITransactionRunner;
 import com.acme.orders.application.view.OrderView;
 import com.acme.orders.domain.model.order.OrderLineId;
 import com.acme.orders.domain.model.shared.Quantity;
 import java.util.Objects;
 
 /** Sets a line's quantity to an exact value. */
-public class ChangeOrderLineQuantityService implements ChangeOrderLineQuantityUseCase {
+public class ChangeOrderLineQuantityService implements IChangeOrderLineQuantityUseCase {
 
     private final OrderCommandExecutor executor;
 
-    public ChangeOrderLineQuantityService(OrderRepository orders, DomainEventPublisher eventPublisher,
-                                          TransactionRunner transactions) {
+    public ChangeOrderLineQuantityService(IOrderRepository orders, IDomainEventPublisher eventPublisher,
+                                          ITransactionRunner transactions) {
         this.executor = new OrderCommandExecutor(orders, eventPublisher, transactions);
     }
 

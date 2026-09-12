@@ -1,7 +1,7 @@
 package com.acme.orders.application.fake;
 
 import com.acme.orders.application.exception.ConcurrentModificationException;
-import com.acme.orders.application.port.outbound.OrderRepository;
+import com.acme.orders.application.port.outbound.IOrderRepository;
 import com.acme.orders.domain.model.order.Order;
 import com.acme.orders.domain.model.order.OrderId;
 import com.acme.orders.domain.model.order.OrderSnapshot;
@@ -17,7 +17,7 @@ import java.util.Optional;
  * real production code path — including version checking, which it reproduces faithfully enough to
  * test the concurrency behaviour.
  */
-public class InMemoryOrderRepository implements OrderRepository {
+public class InMemoryOrderRepository implements IOrderRepository {
 
     private final Map<OrderId, OrderSnapshot> stored = new HashMap<>();
 

@@ -3,9 +3,9 @@ package com.acme.orders.application.usecase;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.acme.orders.application.fake.DirectTransactionRunner;
-import com.acme.orders.application.port.outbound.EventMessagePublisher;
+import com.acme.orders.application.port.outbound.IEventMessagePublisher;
 import com.acme.orders.application.port.outbound.PendingEventMessage;
-import com.acme.orders.application.port.outbound.PendingEventStore;
+import com.acme.orders.application.port.outbound.IPendingEventStore;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -70,7 +70,7 @@ class RelayPendingEventsServiceTest {
         assertThat(publisher.sent).isEmpty();
     }
 
-    private static final class FakePendingEventStore implements PendingEventStore {
+    private static final class FakePendingEventStore implements IPendingEventStore {
 
         private final Map<UUID, PendingEventMessage> pending = new LinkedHashMap<>();
         private final List<UUID> published = new ArrayList<>();
@@ -107,7 +107,7 @@ class RelayPendingEventsServiceTest {
         }
     }
 
-    private static final class FakePublisher implements EventMessagePublisher {
+    private static final class FakePublisher implements IEventMessagePublisher {
 
         private final List<PendingEventMessage> sent = new ArrayList<>();
         private UUID failingId;

@@ -11,7 +11,7 @@ import com.acme.orders.domain.model.shared.Money;
  * {@link Order#place} takes it as a parameter (double dispatch) rather than reaching out for it, so
  * the aggregate keeps no dependency on whichever policy is in force.
  */
-public interface DiscountPolicy {
+public interface IDiscountPolicy {
 
     /** Must return a non-negative amount in the order's currency, never exceeding the subtotal. */
     Money discountFor(Order order);

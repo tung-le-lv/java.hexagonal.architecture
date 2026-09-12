@@ -9,18 +9,18 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.acme.orders.application.exception.ConcurrentModificationException;
 import com.acme.orders.application.exception.OrderNotFoundException;
-import com.acme.orders.application.port.inbound.AddOrderLineUseCase;
-import com.acme.orders.application.port.inbound.CancelOrderUseCase;
-import com.acme.orders.application.port.inbound.ChangeOrderLineQuantityUseCase;
-import com.acme.orders.application.port.inbound.CreateDraftOrderUseCase;
-import com.acme.orders.application.port.inbound.PayOrderUseCase;
-import com.acme.orders.application.port.inbound.PlaceOrderUseCase;
-import com.acme.orders.application.port.inbound.RemoveOrderLineUseCase;
-import com.acme.orders.application.port.inbound.ShipOrderUseCase;
+import com.acme.orders.application.port.inbound.IAddOrderLineUseCase;
+import com.acme.orders.application.port.inbound.ICancelOrderUseCase;
+import com.acme.orders.application.port.inbound.IChangeOrderLineQuantityUseCase;
+import com.acme.orders.application.port.inbound.ICreateDraftOrderUseCase;
+import com.acme.orders.application.port.inbound.IPayOrderUseCase;
+import com.acme.orders.application.port.inbound.IPlaceOrderUseCase;
+import com.acme.orders.application.port.inbound.IRemoveOrderLineUseCase;
+import com.acme.orders.application.port.inbound.IShipOrderUseCase;
 import com.acme.orders.application.port.inbound.command.CreateDraftOrderCommand;
 import com.acme.orders.application.port.inbound.command.PlaceOrderCommand;
-import com.acme.orders.application.port.inbound.query.GetOrderQuery;
-import com.acme.orders.application.port.inbound.query.ListCustomerOrdersQuery;
+import com.acme.orders.application.port.inbound.query.IGetOrderQuery;
+import com.acme.orders.application.port.inbound.query.IListCustomerOrdersQuery;
 import com.acme.orders.application.view.OrderSummaryView;
 import com.acme.orders.application.view.OrderView;
 import com.acme.orders.application.view.Page;
@@ -274,7 +274,7 @@ class OrderControllerTest {
         }
 
         @Bean
-        CreateDraftOrderUseCase createDraftOrderUseCase(Stub stub) {
+        ICreateDraftOrderUseCase createDraftOrderUseCase(Stub stub) {
             return command -> {
                 stub.lastCreateCommand.set(command);
                 return view(OrderStatus.DRAFT);
@@ -282,22 +282,22 @@ class OrderControllerTest {
         }
 
         @Bean
-        AddOrderLineUseCase addOrderLineUseCase() {
+        IAddOrderLineUseCase addOrderLineUseCase() {
             return command -> view(OrderStatus.DRAFT);
         }
 
         @Bean
-        ChangeOrderLineQuantityUseCase changeOrderLineQuantityUseCase() {
+        IChangeOrderLineQuantityUseCase changeOrderLineQuantityUseCase() {
             return command -> view(OrderStatus.DRAFT);
         }
 
         @Bean
-        RemoveOrderLineUseCase removeOrderLineUseCase() {
+        IRemoveOrderLineUseCase removeOrderLineUseCase() {
             return command -> view(OrderStatus.DRAFT);
         }
 
         @Bean
-        PlaceOrderUseCase placeOrderUseCase(Stub stub) {
+        IPlaceOrderUseCase placeOrderUseCase(Stub stub) {
             return command -> {
                 stub.lastPlaceCommand.set(command);
                 return stub.placeBehaviour.apply(command.orderId());
@@ -305,27 +305,27 @@ class OrderControllerTest {
         }
 
         @Bean
-        PayOrderUseCase payOrderUseCase() {
+        IPayOrderUseCase payOrderUseCase() {
             return command -> view(OrderStatus.PAID);
         }
 
         @Bean
-        ShipOrderUseCase shipOrderUseCase() {
+        IShipOrderUseCase shipOrderUseCase() {
             return command -> view(OrderStatus.SHIPPED);
         }
 
         @Bean
-        CancelOrderUseCase cancelOrderUseCase() {
+        ICancelOrderUseCase cancelOrderUseCase() {
             return command -> view(OrderStatus.CANCELLED);
         }
 
         @Bean
-        GetOrderQuery getOrderQuery(Stub stub) {
+        IGetOrderQuery getOrderQuery(Stub stub) {
             return orderId -> stub.getOrderBehaviour.apply(orderId);
         }
 
         @Bean
-        ListCustomerOrdersQuery listCustomerOrdersQuery() {
+        IListCustomerOrdersQuery listCustomerOrdersQuery() {
             return (customerId, page, size) -> Page.of(List.of(new OrderSummaryView(
                     ORDER_ID, customerId, "PLACED", "EUR", new BigDecimal("100.00"), 1,
                     Instant.parse("2026-03-01T12:00:00Z"), null)), page, size, 3);

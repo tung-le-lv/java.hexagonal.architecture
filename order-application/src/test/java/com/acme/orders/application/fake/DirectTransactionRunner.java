@@ -1,6 +1,6 @@
 package com.acme.orders.application.fake;
 
-import com.acme.orders.application.port.outbound.TransactionRunner;
+import com.acme.orders.application.port.outbound.ITransactionRunner;
 import java.util.function.Supplier;
 
 /**
@@ -9,7 +9,7 @@ import java.util.function.Supplier;
  * <p>Adequate for use case tests precisely because the port hides the mechanism: the use case under
  * test cannot tell the difference, which is the property that makes it testable without a database.
  */
-public class DirectTransactionRunner implements TransactionRunner {
+public class DirectTransactionRunner implements ITransactionRunner {
 
     private int invocations;
 

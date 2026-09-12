@@ -14,22 +14,22 @@ import java.util.Objects;
  */
 public abstract class AggregateRoot<ID> {
 
-    private final List<DomainEvent> pendingEvents = new ArrayList<>();
+    private final List<IDomainEvent> pendingEvents = new ArrayList<>();
 
     public abstract ID id();
 
-    protected final void raise(DomainEvent event) {
+    protected final void raise(IDomainEvent event) {
         pendingEvents.add(Objects.requireNonNull(event, "event must not be null"));
     }
 
     /** Events raised so far, without consuming them. */
-    public final List<DomainEvent> pendingEvents() {
+    public final List<IDomainEvent> pendingEvents() {
         return List.copyOf(pendingEvents);
     }
 
     /** Drains the buffer; called once per transaction by the application layer. */
-    public final List<DomainEvent> drainEvents() {
-        List<DomainEvent> drained = List.copyOf(pendingEvents);
+    public final List<IDomainEvent> drainEvents() {
+        List<IDomainEvent> drained = List.copyOf(pendingEvents);
         pendingEvents.clear();
         return drained;
     }

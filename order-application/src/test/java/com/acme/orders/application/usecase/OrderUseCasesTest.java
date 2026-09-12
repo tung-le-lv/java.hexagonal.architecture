@@ -28,7 +28,7 @@ import com.acme.orders.domain.model.order.OrderId;
 import com.acme.orders.domain.model.order.ProductId;
 import com.acme.orders.domain.model.shared.Money;
 import com.acme.orders.domain.model.shared.Quantity;
-import com.acme.orders.domain.policy.DiscountPolicy;
+import com.acme.orders.domain.policy.IDiscountPolicy;
 import java.math.BigDecimal;
 import java.time.Clock;
 import java.time.Instant;
@@ -48,7 +48,7 @@ class OrderUseCasesTest {
 
     private static final Instant NOW = Instant.parse("2026-03-01T12:00:00Z");
     private static final UUID CUSTOMER = UUID.randomUUID();
-    private static final DiscountPolicy FLAT_TEN_PERCENT =
+    private static final IDiscountPolicy FLAT_TEN_PERCENT =
             order -> order.subtotal().percentage(BigDecimal.TEN);
 
     private InMemoryOrderRepository orders;
