@@ -11,7 +11,7 @@
 
   <artifactId>order-adapter-persistence</artifactId>
   <name>order-adapter-persistence</name>
-  <description>Driven (outbound) adapter: JPA persistence, transactional boundary, transactional outbox.</description>
+  <description>Outbound adapter: JPA persistence, transactional boundary, transactional outbox.</description>
 
   <dependencies>
     <dependency>

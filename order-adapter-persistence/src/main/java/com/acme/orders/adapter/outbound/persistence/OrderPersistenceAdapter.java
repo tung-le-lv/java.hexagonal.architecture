@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Driven adapter implementing both persistence ports over JPA.
+ * Outbound adapter implementing both persistence ports over JPA.
  *
  * <p>It also translates the data-access layer's failures into the application's vocabulary — a
  * Spring {@link OptimisticLockingFailureException} becomes a

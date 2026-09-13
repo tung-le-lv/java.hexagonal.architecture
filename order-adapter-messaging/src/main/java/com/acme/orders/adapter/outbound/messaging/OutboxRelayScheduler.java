@@ -9,7 +9,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 /**
- * Driving adapter: a clock that periodically asks the application to drain the outbox.
+ * Inbound adapter: a clock that periodically asks the application to drain the outbox.
  *
  * <p>It holds no logic of its own — the relaying rules live in
  * {@link com.acme.orders.application.usecase.RelayPendingEventsService} — which is what makes the

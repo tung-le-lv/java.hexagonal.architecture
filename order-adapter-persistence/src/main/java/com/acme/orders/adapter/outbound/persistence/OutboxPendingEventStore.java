@@ -11,7 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-/** Driven adapter: the outbox table, seen as the store of events awaiting delivery. */
+/** Outbound adapter: the outbox table, seen as the store of events awaiting delivery. */
 @Component
 public class OutboxPendingEventStore implements IPendingEventStore {
 

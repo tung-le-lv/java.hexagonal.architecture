@@ -11,7 +11,7 @@
 
   <artifactId>order-adapter-rest</artifactId>
   <name>order-adapter-rest</name>
-  <description>Driving (inbound) adapter: HTTP/JSON mapped onto the application's input ports.</description>
+  <description>Inbound adapter: HTTP/JSON mapped onto the application's input ports.</description>
 
   <dependencies>
     <dependency>

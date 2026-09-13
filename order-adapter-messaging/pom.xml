@@ -11,7 +11,7 @@
 
   <artifactId>order-adapter-messaging</artifactId>
   <name>order-adapter-messaging</name>
-  <description>Driven (outbound) adapter: relays outbox records to the message broker.</description>
+  <description>Outbound adapter: relays outbox records to the message broker.</description>
 
   <dependencies>
     <dependency>

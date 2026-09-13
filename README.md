@@ -39,15 +39,15 @@ aggregate — it's a CQRS read port, not a DDD repository.
 An **adapter** is code that sits on one side of a port and translates between the port's
 vocabulary and some external technology's vocabulary.
 
-- **Driving adapters** sit on the input side and call a use case. `order-adapter-rest`'s
+- **Inbound adapters** sit on the input side and call a use case. `order-adapter-rest`'s
   `OrderController` is one: it turns an HTTP request into a `PlaceOrderCommand`, calls
   `IPlaceOrderUseCase.placeOrder(...)`, and turns the result back into JSON.
-- **Driven adapters** sit on the output side and implement an output port.
+- **Outbound adapters** sit on the output side and implement an output port.
   `order-adapter-persistence`'s `OrderPersistenceAdapter` implements `IOrderRepository` with JPA;
   `order-adapter-messaging`'s `LoggingEventMessagePublisher` implements `IEventMessagePublisher`.
 
-Neither kind of adapter calls the other directly, and neither kind knows the other exists. A
-driving adapter depends only on input ports; a driven adapter depends only on output ports it
+Neither kind of adapter calls the other directly, and neither kind knows the other exists. An
+inbound adapter depends only on input ports; an outbound adapter depends only on output ports it
 implements. That's what makes them interchangeable: swap `order-adapter-rest` for a gRPC adapter,
 or `order-adapter-persistence` for a different store, and nothing on the other side of the
 hexagon — not the use cases, not the other adapters — has to change.
@@ -63,9 +63,9 @@ module boundary:
 order-service
 ├── order-domain                 ← the hexagon's core. ZERO dependencies.
 ├── order-application            ← ports (inbound/outbound) + use cases. Depends on: domain.
-├── order-adapter-rest           ← driving adapter (HTTP).     Depends on: application.
-├── order-adapter-persistence    ← driven adapter (JPA).       Depends on: application.
-├── order-adapter-messaging      ← driven adapter (broker).    Depends on: application.
+├── order-adapter-rest           ← inbound adapter (HTTP).     Depends on: application.
+├── order-adapter-persistence    ← outbound adapter (JPA).     Depends on: application.
+├── order-adapter-messaging      ← outbound adapter (broker).  Depends on: application.
 └── order-bootstrap              ← composition root. Depends on: everything.
 ```
 
@@ -76,9 +76,9 @@ order-service
               │                     │                      │
     ┌─────────▼──────────┐          │           ┌──────────▼──────────┐
     │  adapter-rest      │          │           │  adapter-persistence│
-    │  (driving)         │          │           │  adapter-messaging  │
+    │  (inbound)         │          │           │  adapter-messaging  │
     │  HTTP → input port │          │           │  output port → tech │
-    └─────────┬──────────┘          │           │  (driven)           │
+    └─────────┬──────────┘          │           │  (outbound)         │
               │                     │            └──────────▲──────────┘
               │  calls ↓            │          implements ↑ │
     ┌─────────▼─────────────────────▼──────────────────────┴──────────┐
@@ -104,8 +104,8 @@ That's not incidental — it's what guarantees `order-adapter-rest` could be del
 without `order-adapter-persistence` noticing.
 
 Every other module knows only the slice of the hexagon it needs. `order-bootstrap` is the one
-module allowed to know about all of them at once, because something has to wire a driving
-adapter's calls through to a driven adapter's implementation — and that wiring is itself not
+module allowed to know about all of them at once, because something has to wire an inbound
+adapter's calls through to an outbound adapter's implementation — and that wiring is itself not
 business logic, so it doesn't belong in `order-application`.
 
 ## Architecture Test

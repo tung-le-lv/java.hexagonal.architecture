@@ -3,7 +3,7 @@ package com.acme.orders.application.port.outbound;
 import java.util.function.Supplier;
 
 /**
- * Driven port for the transaction boundary.
+ * Output port for the transaction boundary.
  *
  * <p>The use case knows where the boundary belongs — one command, one transaction — but not which
  * technology enforces it, so the boundary is expressed as a port and implemented by the persistence

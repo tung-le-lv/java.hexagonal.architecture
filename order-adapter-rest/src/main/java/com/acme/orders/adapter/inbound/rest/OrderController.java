@@ -38,7 +38,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Driving adapter: maps HTTP onto the order use cases.
+ * Inbound adapter: maps HTTP onto the order use cases.
  *
  * <p>It depends on one interface per operation, so what this class is allowed to do is visible in its
  * constructor. Note what it does not contain: no business rules, no status checks, no pricing — only

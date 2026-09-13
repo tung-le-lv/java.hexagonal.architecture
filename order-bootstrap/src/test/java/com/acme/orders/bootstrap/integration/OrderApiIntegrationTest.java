@@ -24,7 +24,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
 /**
- * Drives the whole hexagon through its real driving adapter: HTTP in, database and outbox out.
+ * Drives the whole hexagon through its real inbound adapter: HTTP in, database and outbox out.
  *
  * <p>The unit tests prove the rules; this proves the wiring — that the ports are bound to the
  * adapters, the migrations match the mappings, and the transaction boundary actually commits.

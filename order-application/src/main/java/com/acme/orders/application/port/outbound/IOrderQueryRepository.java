@@ -8,7 +8,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 /**
- * Driven port for the read side: returns projections, never aggregates.
+ * Output port for the read side: returns projections, never aggregates.
  *
  * <p>Splitting this from {@link IOrderRepository} lets the adapter answer queries however it is
  * fastest — a join, a view, a denormalised table — without that choice reaching into the model.

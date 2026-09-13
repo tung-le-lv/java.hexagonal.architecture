@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
- * Driven adapter that writes events to the log instead of a broker.
+ * Outbound adapter that writes events to the log instead of a broker.
  *
  * <p>The point of this class is what it demonstrates rather than what it does: the broker is one
  * replaceable implementation of {@link IEventMessagePublisher}, so a Kafka or SQS adapter is a new
