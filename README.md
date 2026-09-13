@@ -1,4 +1,4 @@
-# Hexagonal Architecture
+# Hexagonal Architecture with Domain Driven Design
 
 ## The idea in one sentence
 
